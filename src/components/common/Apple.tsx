@@ -1,5 +1,5 @@
 import { Image } from '@mantine/core';
-import AppleImg from '@assets/images/common/Apple.png';
+import AppleImg from '@assets/images/common/apple.png';
 
 interface Props {
   w?: string | number;
