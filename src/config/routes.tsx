@@ -12,7 +12,7 @@ import { TermsAndConditions } from '@pages/termsAndConditions';
 
 export const router = createBrowserRouter([
   {
-    path: '/login',
+    path: '/',
     element: <LoginPage />,
   },
   {
