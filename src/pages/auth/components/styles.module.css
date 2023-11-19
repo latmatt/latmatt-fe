@@ -1,0 +1,13 @@
+.forgetPassword {
+  cursor: pointer;
+  display: inline;
+  font-weight: bold;
+
+  &:hover {
+    color: var(--mantine-color-primary-6);
+  }
+}
+
+.form {
+  width: 100%;
+}

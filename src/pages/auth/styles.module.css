@@ -1,0 +1,24 @@
+.wrapper {
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  border-radius: var(--mantine-spacing-xs);
+  @media (max-width: $mantine-breakpoint-sm) {
+    height: 100vh;
+    width: 100%;
+    border-radius: 0;
+  }
+}
+
+.tabList {
+  border-bottom: 1px solid var(--mantine-color-neutral-3);
+}
+
+.tabPanel {
+  @media (max-width: $mantine-breakpoint-sm) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 50px);
+  }
+}

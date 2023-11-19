@@ -1,37 +1,24 @@
-import {
-  Center,
-  BackgroundImage,
-  Paper,
-  Grid,
-  createStyles,
-} from '@mantine/core';
+import { Center, BackgroundImage, Paper, Grid } from '@mantine/core';
 import AUTH_BG from '@assets/images/common/auth-bg.png';
 import { useAuthRoute } from '@hooks/useAuth';
 import { ResetPasswordForm } from './components';
-
-const useStyles = createStyles((theme) => ({
-  paper: {
-    overflow: 'hidden',
-    width: '100%',
-    [theme.fn.smallerThan('sm')]: {
-      height: '100vh',
-      width: '100vw',
-      marginLeft: -8,
-    },
-  },
-}));
+import classes from './styles.module.css';
 
 export function ResetPasswordPage() {
   useAuthRoute();
-
-  const { classes } = useStyles();
 
   return (
     <BackgroundImage src={AUTH_BG}>
       <Center h="100vh" w="100%">
         <Grid justify="center" w="100%">
-          <Grid.Col md={4} sm={8} xs={12}>
-            <Paper radius="md" className={classes.paper}>
+          <Grid.Col
+            span={{
+              md: 4,
+              sm: 8,
+              xs: 12,
+            }}
+          >
+            <Paper radius="md" className={classes.wrapper}>
               <Center w="100%" h="100%">
                 <ResetPasswordForm />
               </Center>

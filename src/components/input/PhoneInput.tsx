@@ -1,27 +1,16 @@
-import { Box, TextInput, TextInputProps, Text } from '@mantine/core';
+import { Box, TextInputProps, Text, TextInput } from '@mantine/core';
+import classes from './styles.module.css';
 
 function Icon() {
   return (
-    <Box
-      sx={{
-        borderRightWidth: 1,
-        borderRight: 'solid',
-      }}
-      mr="xs"
-    >
-      <Text mx="xs">+95</Text>
+    <Box className={classes.phoneInputIcon}>
+      <Text mx="xs" c="black" className={classes.phoneInputIconText}>
+        +95
+      </Text>
     </Box>
   );
 }
 
 export function PhoneInput(props: TextInputProps) {
-  return (
-    <TextInput
-      label={props.label}
-      placeholder={props.placeholder}
-      icon={<Icon />}
-      iconWidth={55}
-      {...props}
-    />
-  );
+  return <TextInput leftSection={<Icon />} leftSectionWidth={60} {...props} />;
 }

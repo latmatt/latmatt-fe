@@ -1,17 +1,10 @@
-import {
-  Button,
-  Stack,
-  Text,
-  Box,
-  Group,
-  Checkbox,
-  createStyles,
-} from '@mantine/core';
+import { Button, Stack, Text, Box, Group, Checkbox } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
 import { Link, useNavigate } from 'react-router-dom';
 import { Apple, Facebook, Google, LogoSlogan } from '@components/common';
 import { PhoneInput } from '@components/input';
 import { signUpSchema } from '@utils/schema';
+import classes from './styles.module.css';
 
 interface FormValues {
   phoneNumber: string;
@@ -35,8 +28,11 @@ export function SignupForm() {
   };
 
   return (
-    <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
-      <Stack h="100%" spacing="md" p="lg" align="center" justify="center">
+    <form
+      className={classes.form}
+      onSubmit={form.onSubmit((values) => handleSubmit(values))}
+    >
+      <Stack p="lg" align="center">
         <Box w="60%">
           <LogoSlogan />
         </Box>
@@ -67,7 +63,7 @@ export function SignupForm() {
           Or
         </Text>
 
-        <Group position="center">
+        <Group>
           <Facebook w={60} />
           <Google w={60} />
           <Apple w={60} />

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Apple, Facebook, Google, LogoSlogan } from '@components/common';
 import { PhoneInput } from '@components/input';
 import { loginSchema } from '@utils/schema';
+import classes from './styles.module.css';
 
 interface FormValues {
   phoneNumber: string;
@@ -27,8 +28,11 @@ export function LoginForm() {
   }
 
   return (
-    <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
-      <Stack spacing="md" p="lg" align="center">
+    <form
+      className={classes.form}
+      onSubmit={form.onSubmit((values) => handleSubmit(values))}
+    >
+      <Stack p="lg" align="center">
         <Box w="60%">
           <LogoSlogan />
         </Box>
@@ -46,9 +50,15 @@ export function LoginForm() {
             label="Password"
             {...form.getInputProps('password')}
           />
-          <Text ta="end" onClick={() => navigate('/forget-password')}>
-            forget password?
-          </Text>
+          <Group justify="flex-end">
+            <Text
+              className={classes.forgetPassword}
+              ta="end"
+              onClick={() => navigate('/forget-password')}
+            >
+              forget password?
+            </Text>
+          </Group>
         </Box>
 
         <Button fullWidth type="submit" disabled={!form.isValid()}>
@@ -59,7 +69,7 @@ export function LoginForm() {
           Or
         </Text>
 
-        <Group position="center">
+        <Group>
           <Facebook w={60} />
           <Google w={60} />
           <Apple w={60} />

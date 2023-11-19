@@ -1,6 +1,5 @@
-const headings = {
-  fontFamily: 'inter',
-  fontWeight: 700,
+export const headings = {
+  fontFamily: 'Roboto, sans-serif',
   sizes: {
     h1: { fontSize: '64px', lineHeight: '88px' },
     h2: { fontSize: '56px', lineHeight: '72px' },
@@ -9,5 +8,3 @@ const headings = {
     h5: { fontSize: '24px', lineHeight: '32px' },
   },
 };
-
-export default headings;

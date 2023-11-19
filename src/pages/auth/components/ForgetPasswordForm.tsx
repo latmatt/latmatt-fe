@@ -27,15 +27,15 @@ export function ForgetPasswordForm() {
   return (
     <Box w="100%">
       <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
-        <Stack spacing="md" p="lg" align="center">
+        <Stack p="lg" align="center">
           <Box w="60%">
             <LogoSlogan />
           </Box>
 
           <PhoneInput
             w="100%"
-            placeholder="enter your password"
-            label="Password"
+            placeholder="enter your phone number"
+            label="Phone Number"
             {...form.getInputProps('phoneNumber')}
           />
 

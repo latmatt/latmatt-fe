@@ -1,22 +1,35 @@
+import {
+  Button,
+  TextInput,
+  PasswordInput,
+  Checkbox,
+  Tabs,
+} from '@mantine/core';
+
 export const components = {
-  TextInput: {
+  Button: Button.extend({
     defaultProps: {
       size: 'lg',
     },
-  },
-  PasswordInput: {
+  }),
+  TextInput: TextInput.extend({
     defaultProps: {
       size: 'lg',
     },
-  },
-  Button: {
+  }),
+  PasswordInput: PasswordInput.extend({
     defaultProps: {
       size: 'lg',
     },
-  },
-  Checkbox: {
+  }),
+  Checkbox: Checkbox.extend({
     defaultProps: {
       size: 'xs',
     },
-  },
+  }),
+  TabsTab: Tabs.Tab.extend({
+    defaultProps: {
+      fz: 'lg',
+    },
+  }),
 };

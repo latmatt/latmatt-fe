@@ -30,7 +30,7 @@ export function CreatePasswordForm() {
   return (
     <Box w="100%">
       <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
-        <Stack spacing="md" p="lg" align="center">
+        <Stack p="lg" align="center">
           <Box w="60%">
             <LogoSlogan />
           </Box>
@@ -51,8 +51,8 @@ export function CreatePasswordForm() {
 
           <PasswordInput
             w="100%"
-            placeholder="enter your password"
-            label="Password"
+            placeholder="retype password"
+            label="Retype Password"
             {...form.getInputProps('confirmPassword')}
           />
 

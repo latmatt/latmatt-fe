@@ -1,17 +1,11 @@
-import type { MantineThemeOverride } from '@mantine/core';
-import { createEmotionCache } from '@mantine/core';
+import { MantineThemeOverride, createTheme } from '@mantine/core';
 import colors from './colors';
 import { components } from './components';
-import headings from './headings';
+import { headings } from './headings';
 
-export const cache = createEmotionCache({
-  key: 'kbz',
-  prepend: false,
-});
-
-export const theme: MantineThemeOverride = {
+export const theme: MantineThemeOverride = createTheme({
   primaryColor: 'primary',
   colors,
   headings,
   components,
-};
+});
