@@ -2,7 +2,10 @@ import { Button, Stack, PasswordInput, Box, TextInput } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
 import { useNavigate } from 'react-router-dom';
 import { LogoSlogan } from '@components/common';
+import { LOCAL_STORAGE_KEYS } from '@config/const';
+import { useLocalStorage } from '@hooks/useLocalStorage';
 import { createPasswordSchema } from '@utils/schema';
+import { useRegister } from '../query';
 
 interface FormValues {
   name: string;
@@ -12,6 +15,8 @@ interface FormValues {
 
 export function CreatePasswordForm() {
   const navigate = useNavigate();
+  const { mutate, isLoading } = useRegister();
+  const { get } = useLocalStorage();
 
   const form = useForm<FormValues>({
     initialValues: {
@@ -23,8 +28,23 @@ export function CreatePasswordForm() {
   });
 
   function handleSubmit(values: FormValues) {
-    console.log('CREATE PASSWORD FORM VALUES', values);
-    navigate('/home');
+    const data = get(LOCAL_STORAGE_KEYS.REGISTER);
+
+    mutate(
+      {
+        firstName: '',
+        lastName: '',
+        username: values.name,
+        countryCode: '+95',
+        phoneNumber: data.phoneNumber,
+        password: values.password,
+        mail: '',
+        profileImage: '',
+      },
+      {
+        onSuccess: () => navigate('/home'),
+      }
+    );
   }
 
   return (
@@ -56,7 +76,12 @@ export function CreatePasswordForm() {
             {...form.getInputProps('confirmPassword')}
           />
 
-          <Button fullWidth type="submit" disabled={!form.isValid()}>
+          <Button
+            loading={isLoading}
+            fullWidth
+            type="submit"
+            disabled={!form.isValid()}
+          >
             Submit
           </Button>
         </Stack>

@@ -5,6 +5,7 @@ import { Apple, Facebook, Google, LogoSlogan } from '@components/common';
 import { PhoneInput } from '@components/input';
 import { loginSchema } from '@utils/schema';
 import classes from './styles.module.css';
+import { useLogin } from '../query';
 
 interface FormValues {
   phoneNumber: string;
@@ -13,6 +14,7 @@ interface FormValues {
 
 export function LoginForm() {
   const navigate = useNavigate();
+  const { mutate, isLoading } = useLogin();
 
   const form = useForm<FormValues>({
     initialValues: {
@@ -23,8 +25,9 @@ export function LoginForm() {
   });
 
   function handleSubmit(values: FormValues) {
-    console.log('LOGIN FORM VALUES', values);
-    navigate('/home');
+    mutate(values, {
+      onSuccess: () => navigate('/home'),
+    });
   }
 
   return (
@@ -61,7 +64,12 @@ export function LoginForm() {
           </Group>
         </Box>
 
-        <Button fullWidth type="submit" disabled={!form.isValid()}>
+        <Button
+          loading={isLoading}
+          fullWidth
+          type="submit"
+          disabled={!form.isValid()}
+        >
           Log in
         </Button>
 

@@ -14,6 +14,10 @@ const comment = z
   .min(1, { message: 'Comment must be at least 1 characters.' })
   .max(250, { message: 'Comment must not exceed 250 characters.' });
 
+const requiredString = (message: string) => {
+  return z.string().min(1, { message });
+};
+
 export const createShipmentDyCMOSchema = z.object({
   OPTION: required,
   TR_TYPE_ID: required,
@@ -59,18 +63,14 @@ export const inboxSchema = z.object({
 export const dashboardSchema = inboxSchema;
 
 export const signUpSchema = z.object({
-  phoneNumber: z.string().refine((data) => /^\d{10}$/.test(data), {
-    message: 'Invalid phone number format. Please enter a 10-digit number.',
-  }),
+  phoneNumber: requiredString('Phone number is required!'),
   termsAndConditions: z.boolean().refine((data) => data === true, {
     message: 'Need to accept terms and conditions!',
   }),
 });
 
 export const loginSchema = z.object({
-  phoneNumber: z.string().refine((data) => /^\d{10}$/.test(data), {
-    message: 'Invalid phone number format. Please enter a 10-digit number.',
-  }),
+  phoneNumber: requiredString('Phone number is required!'),
   password: z.string().min(1, { message: 'Password is required!' }),
 });
 
@@ -93,18 +93,16 @@ export const createPasswordSchema = z
 
 export const resetPasswordSchema = z
   .object({
-    password: z.string().min(1, { message: 'Password is required!' }),
+    newPassword: z.string().min(1, { message: 'Password is required!' }),
     confirmPassword: z
       .string()
       .min(1, { message: 'Confirm password is required!' }),
   })
-  .refine((data) => data.password === data.confirmPassword, {
+  .refine((data) => data.newPassword === data.confirmPassword, {
     message: "Passwords don't match",
     path: ['confirm'],
   });
 
 export const forgetPasswordSchema = z.object({
-  phoneNumber: z.string().refine((data) => /^\d{10}$/.test(data), {
-    message: 'Invalid phone number format. Please enter a 10-digit number.',
-  }),
+  phoneNumber: requiredString('Phone number is required!'),
 });

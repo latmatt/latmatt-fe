@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { LogoSlogan } from '@components/common';
 import { PhoneInput } from '@components/input';
 import { forgetPasswordSchema } from '@utils/schema';
+import { useGetOtp } from '../query';
 
 interface FormValues {
   phoneNumber: string;
@@ -11,6 +12,7 @@ interface FormValues {
 
 export function ForgetPasswordForm() {
   const navigate = useNavigate();
+  const { mutate, isLoading } = useGetOtp();
 
   const form = useForm<FormValues>({
     initialValues: {
@@ -20,8 +22,9 @@ export function ForgetPasswordForm() {
   });
 
   function handleSubmit(values: FormValues) {
-    console.log('FORGET PASSWORD FORM VALUES', values);
-    navigate('/reset-password');
+    mutate(values, {
+      onSuccess: () => navigate('/otp'),
+    });
   }
 
   return (
@@ -39,7 +42,12 @@ export function ForgetPasswordForm() {
             {...form.getInputProps('phoneNumber')}
           />
 
-          <Button fullWidth type="submit" disabled={!form.isValid()}>
+          <Button
+            loading={isLoading}
+            fullWidth
+            type="submit"
+            disabled={!form.isValid()}
+          >
             Submit
           </Button>
         </Stack>

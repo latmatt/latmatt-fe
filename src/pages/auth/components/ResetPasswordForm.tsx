@@ -2,23 +2,29 @@ import { Button, Stack, PasswordInput, Box } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
 import { LogoSlogan } from '@components/common';
 import { resetPasswordSchema } from '@utils/schema';
+import { useResetPassword } from '../query';
 
 interface FormValues {
-  password: string;
+  newPassword: string;
   confirmPassword: string;
 }
 
 export function ResetPasswordForm() {
+  const { mutate, isLoading } = useResetPassword();
+
   const form = useForm<FormValues>({
     initialValues: {
-      password: '',
+      newPassword: '',
       confirmPassword: '',
     },
     validate: zodResolver(resetPasswordSchema),
   });
 
   function handleSubmit(values: FormValues) {
-    console.log('RESET PASSWORD FORM VALUES', values);
+    mutate({
+      newPassword: values.newPassword,
+      phoneNumber: '09899587877',
+    });
   }
 
   return (
@@ -33,7 +39,7 @@ export function ResetPasswordForm() {
             w="100%"
             placeholder="enter your password"
             label="Create Password"
-            {...form.getInputProps('password')}
+            {...form.getInputProps('newPassword')}
           />
 
           <PasswordInput
@@ -43,7 +49,12 @@ export function ResetPasswordForm() {
             {...form.getInputProps('confirmPassword')}
           />
 
-          <Button fullWidth type="submit" disabled={!form.isValid()}>
+          <Button
+            loading={isLoading}
+            fullWidth
+            type="submit"
+            disabled={!form.isValid()}
+          >
             Submit
           </Button>
         </Stack>

@@ -20,7 +20,7 @@ export function LoginPage() {
             }}
           >
             <Paper radius="md" className={classes.wrapper}>
-              <Tabs radius={0} variant="pills" defaultValue={AUTH_TABS[1]}>
+              <Tabs radius={0} variant="pills" defaultValue={AUTH_TABS[0]}>
                 <Tabs.List grow className={classes.tabList}>
                   {AUTH_TABS.map((tab) => (
                     <Tabs.Tab fw="bold" h={50} key={tab} value={tab}>

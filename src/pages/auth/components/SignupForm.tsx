@@ -3,8 +3,11 @@ import { useForm, zodResolver } from '@mantine/form';
 import { Link, useNavigate } from 'react-router-dom';
 import { Apple, Facebook, Google, LogoSlogan } from '@components/common';
 import { PhoneInput } from '@components/input';
+import { LOCAL_STORAGE_KEYS } from '@config/const';
+import { useLocalStorage } from '@hooks/useLocalStorage';
 import { signUpSchema } from '@utils/schema';
 import classes from './styles.module.css';
+import { useGetOtp } from '../query';
 
 interface FormValues {
   phoneNumber: string;
@@ -13,6 +16,8 @@ interface FormValues {
 
 export function SignupForm() {
   const navigate = useNavigate();
+  const { mutate, isLoading } = useGetOtp();
+  const { set } = useLocalStorage();
 
   const form = useForm<FormValues>({
     initialValues: {
@@ -23,8 +28,17 @@ export function SignupForm() {
   });
 
   const handleSubmit = (value: FormValues) => {
-    console.log('SIGN UP FORM VALUES', value);
-    navigate('/otp');
+    mutate(
+      {
+        phoneNumber: value.phoneNumber,
+      },
+      {
+        onSuccess: () => {
+          set(LOCAL_STORAGE_KEYS.REGISTER, value);
+          navigate('/otp');
+        },
+      }
+    );
   };
 
   return (
@@ -44,7 +58,12 @@ export function SignupForm() {
           {...form.getInputProps('phoneNumber')}
         />
 
-        <Button fullWidth type="submit" disabled={!form.isValid()}>
+        <Button
+          loading={isLoading}
+          fullWidth
+          type="submit"
+          disabled={!form.isValid()}
+        >
           Sign up
         </Button>
 

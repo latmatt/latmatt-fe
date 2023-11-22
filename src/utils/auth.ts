@@ -11,12 +11,6 @@ export function getAuth() {
 }
 
 export function setAuth(credentials: string) {
-  // const data = localStorage.getItem('_u') as string | undefined | null;
-  // if (data) {
-  //   const state = JSON.parse(data) as IAuth;
-  //   return state;
-  // }
-  // return null;
   return Cookies.set('auth', credentials, {
     expires: 1,
     sameSite: 'Lax',
@@ -25,5 +19,5 @@ export function setAuth(credentials: string) {
 
 export function removeAuth() {
   Cookies.remove('auth');
-  window.location.href = '/login';
+  window.location.href = '/';
 }
