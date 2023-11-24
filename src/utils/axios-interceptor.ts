@@ -43,12 +43,7 @@ export const setupRequestInterceptor = () => {
       if (!startsWith(request.url, 'http')) {
         request.url = `${API_URL}${request.url}`;
       }
-      const auth = getAuth();
-      if (auth)
-        request.headers = {
-          ...request.headers,
-          Authorization: `Bearer ${auth.state.user.accesstoken}`,
-        };
+
       return request;
     },
     (error) => Promise.reject(error)
