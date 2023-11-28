@@ -88,7 +88,9 @@ export function LoginForm() {
             onClick={() => {
               window.location.href = `${
                 import.meta.env.VITE_API_URL
-              }/oauth2/authorization/google?redirect_uri=http://localhost:3002`;
+              }/oauth2/authorization/google?redirect_uri=${
+                import.meta.env.VITE_FE_DOMAIN
+              }`;
             }}
           />
           <Apple w={60} />
