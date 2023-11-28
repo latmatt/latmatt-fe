@@ -23,7 +23,7 @@ export function ForgetPasswordForm() {
 
   function handleSubmit(values: FormValues) {
     mutate(values, {
-      onSuccess: () => navigate('/otp'),
+      onSuccess: () => navigate('/auth/otp'),
     });
   }
 

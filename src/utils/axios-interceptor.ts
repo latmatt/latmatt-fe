@@ -1,13 +1,14 @@
 import { showNotification } from '@mantine/notifications';
-import axios, { AxiosError } from 'axios';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 import { startsWith } from 'lodash-es';
-import { getAuth, removeAuth } from './auth';
+import { removeAuth } from './auth';
 
 const API_URL = import.meta.env.VITE_API_URL ?? '';
 
 export const setupResponseInterceptor = () => {
   axios.interceptors.response.use(
-    (response) => response,
+    // eslint-disable-next-line no-console
+    (response: AxiosResponse) => response,
     (error: AxiosError) => {
       if (error?.code === 'ERR_NETWORK') {
         showNotification({

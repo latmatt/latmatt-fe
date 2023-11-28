@@ -3,6 +3,7 @@ import { useForm, zodResolver } from '@mantine/form';
 import { useNavigate } from 'react-router-dom';
 import { Apple, Facebook, Google, LogoSlogan } from '@components/common';
 import { PhoneInput } from '@components/input';
+import { setAuth } from '@utils/auth';
 import { loginSchema } from '@utils/schema';
 import classes from './styles.module.css';
 import { useLogin } from '../query';
@@ -26,7 +27,10 @@ export function LoginForm() {
 
   function handleSubmit(values: FormValues) {
     mutate(values, {
-      onSuccess: () => navigate('/home'),
+      onSuccess: (data) => {
+        setAuth(data.headers.jwt_token, data.headers.refresh_token);
+        navigate('/home');
+      },
     });
   }
 
@@ -79,7 +83,14 @@ export function LoginForm() {
 
         <Group>
           <Facebook w={60} />
-          <Google w={60} />
+          <Google
+            w={60}
+            onClick={() => {
+              window.location.href = `${
+                import.meta.env.VITE_API_URL
+              }/oauth2/authorization/google?redirect_uri=http://localhost:3002`;
+            }}
+          />
           <Apple w={60} />
         </Group>
       </Stack>

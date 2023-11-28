@@ -32,7 +32,7 @@ export function OtpForm() {
         type: OTP_TYPES.REGISTER,
       },
       {
-        onSuccess: () => navigate('/create-password'),
+        onSuccess: () => navigate('/auth/create-password'),
       }
     );
   };

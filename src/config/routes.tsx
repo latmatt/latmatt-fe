@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { Page404 } from '@components/page';
+import { AuthLayout, RootLayout } from '@layouts';
 import {
   CreatePasswordPage,
   ForgetPasswordPage,
@@ -9,44 +10,49 @@ import {
 } from '@pages/auth';
 import { HomePage } from '@pages/home';
 import { TermsAndConditions } from '@pages/termsAndConditions';
-import { RootLayout } from '../layouts/RootLayout';
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/auth',
     element: <RootLayout />,
     children: [
       {
-        path: '/',
+        path: 'login',
         element: <LoginPage />,
       },
       {
-        path: '/otp',
+        path: 'otp',
         element: <OtpPage />,
       },
       {
-        path: '/create-password',
+        path: 'create-password',
         element: <CreatePasswordPage />,
       },
       {
-        path: '/forget-password',
+        path: 'forget-password',
         element: <ForgetPasswordPage />,
       },
       {
-        path: '/reset-password',
+        path: 'reset-password',
         element: <ResetPasswordPage />,
       },
       {
-        path: '/home',
-        element: <HomePage />,
-      },
-      {
-        path: '/terms-and-conditions',
+        path: 'terms-and-conditions',
         element: <TermsAndConditions />,
       },
       {
         path: '*',
         element: <Page404 />,
+      },
+    ],
+  },
+  {
+    path: '/',
+    element: <AuthLayout />,
+    children: [
+      {
+        path: '/home',
+        element: <HomePage />,
       },
     ],
   },

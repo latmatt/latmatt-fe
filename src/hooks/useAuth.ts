@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { DASHBOARD_ROUTE } from '@config/const';
 import { getAuth } from '@utils/auth';
 
 export function useAuthedRoute() {
@@ -9,9 +8,9 @@ export function useAuthedRoute() {
 
   useEffect(() => {
     const auth = getAuth();
-    // if (!auth) {
-    //   navigate('/');
-    // }
+    if (!auth) {
+      navigate('/auth/login');
+    }
   }, [navigate, pathname]);
 }
 
@@ -22,7 +21,7 @@ export function useAuthRoute() {
   useEffect(() => {
     const auth = getAuth();
     if (auth) {
-      navigate(DASHBOARD_ROUTE);
+      navigate('/home');
     }
   }, [navigate, pathname]);
 }

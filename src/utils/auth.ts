@@ -1,18 +1,21 @@
 import Cookies from 'js-cookie';
-import { IAuth } from './auth.type';
+import { COOKIE_KEYS } from '@config/const';
 
 export function getAuth() {
-  return Cookies.get('auth');
+  return Cookies.get(COOKIE_KEYS.ACCESS_TOKEN);
 }
 
-export function setAuth(credentials: string) {
-  return Cookies.set('auth', credentials, {
-    expires: 1,
-    sameSite: 'Lax',
-  });
+export function getRefreshAuth() {
+  return Cookies.get(COOKIE_KEYS.REFRESH_TOKEN);
+}
+
+export function setAuth(access_token: string, refresh_token: string) {
+  Cookies.set(COOKIE_KEYS.ACCESS_TOKEN, access_token);
+  Cookies.set(COOKIE_KEYS.REFRESH_TOKEN, refresh_token);
 }
 
 export function removeAuth() {
-  Cookies.remove('auth');
-  window.location.href = '/';
+  Cookies.remove(COOKIE_KEYS.ACCESS_TOKEN);
+  Cookies.remove(COOKIE_KEYS.REFRESH_TOKEN);
+  window.location.href = '/auth/login';
 }

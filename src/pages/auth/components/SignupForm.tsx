@@ -35,7 +35,7 @@ export function SignupForm() {
       {
         onSuccess: () => {
           set(LOCAL_STORAGE_KEYS.REGISTER, value);
-          navigate('/otp');
+          navigate('/auth/otp');
         },
       }
     );
@@ -84,7 +84,14 @@ export function SignupForm() {
 
         <Group>
           <Facebook w={60} />
-          <Google w={60} />
+          <Google
+            w={60}
+            onClick={() => {
+              window.location.href = `${
+                import.meta.env.VITE_API_URL
+              }/oauth2/authorization/google`;
+            }}
+          />
           <Apple w={60} />
         </Group>
       </Stack>
