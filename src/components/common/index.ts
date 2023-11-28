@@ -1,7 +1,5 @@
 export * from './Amount';
 export * from './Card';
-export * from './Can';
-export * from './ProfileAvatar';
 export * from './Search';
 export * from './LogoSlogan';
 export * from './Facebook';
