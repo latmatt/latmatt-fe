@@ -14,3 +14,8 @@ export const COOKIE_KEYS = {
   ACCESS_TOKEN: 'access_token',
   REFRESH_TOKEN: 'refresh_token',
 };
+
+export const MENU_ITEM_TYPE = {
+  DEFAULT: 'default',
+  BUTTON: 'button',
+};

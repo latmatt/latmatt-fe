@@ -8,6 +8,7 @@ import {
   OtpPage,
   ResetPasswordPage,
 } from '@pages/auth';
+import { DashboardPage } from '@pages/dashboard';
 import { HomePage } from '@pages/home';
 import { TermsAndConditions } from '@pages/termsAndConditions';
 
@@ -48,11 +49,29 @@ export const router = createBrowserRouter([
   },
   {
     path: '/',
+    element: <RootLayout />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: 'ticket',
+        element: <HomePage />,
+      },
+      {
+        path: 'support',
+        element: <HomePage />,
+      },
+    ],
+  },
+  {
+    path: '/d',
     element: <AuthLayout />,
     children: [
       {
-        path: '/home',
-        element: <HomePage />,
+        path: '',
+        element: <DashboardPage />,
       },
     ],
   },
