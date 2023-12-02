@@ -8,7 +8,7 @@ interface Props {
 
 export function FeatureCard({ name, icon, description }: Props) {
   return (
-    <Card shadow="sm" padding="lg" radius="md" withBorder>
+    <Card shadow="sm" padding="lg" radius="lg" withBorder>
       <Card.Section>
         <Center h={200}>
           <Image src={icon} height={60} alt="Norway" />

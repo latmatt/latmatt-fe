@@ -5,12 +5,21 @@ import {
   PasswordInput,
   Checkbox,
   Tabs,
+  Select,
+  Text,
 } from '@mantine/core';
+import { IconChevronDown } from '@tabler/icons';
 
 export const components = {
   Button: Button.extend({
     defaultProps: {
       size: 'lg',
+    },
+  }),
+  Select: Select.extend({
+    defaultProps: {
+      size: 'lg',
+      rightSection: <IconChevronDown size={20} />,
     },
   }),
   TextInput: TextInput.extend({
@@ -47,6 +56,11 @@ export const components = {
       loop: true,
       align: 'start',
       slidesToScroll: 1,
+    },
+  }),
+  Text: Text.extend({
+    defaultProps: {
+      c: 'neutral.8',
     },
   }),
 };

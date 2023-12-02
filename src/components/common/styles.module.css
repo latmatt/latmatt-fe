@@ -2,21 +2,6 @@
   cursor: pointer;
 }
 
-.menuItemDefault {
-  cursor: pointer;
-  color: var(--mantine-color-neutral-9);
-  font-weight: 600;
-
-  &:hover {
-    color: var(--mantine-color-primary-6);
-  }
-}
-.activeMenuItemDefault {
-  cursor: pointer;
-  color: var(--mantine-color-primary-6);
-  font-weight: 600;
-}
-
 .footerLink {
   cursor: pointer;
 }

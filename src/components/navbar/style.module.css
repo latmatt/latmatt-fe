@@ -1,0 +1,28 @@
+.desktopNavbar {
+  display: flex;
+  @media (max-width: $mantine-breakpoint-sm) {
+    display: none;
+  }
+}
+
+.mobileNavbar {
+  display: none;
+  @media (max-width: $mantine-breakpoint-sm) {
+    display: flex;
+  }
+}
+
+.menuItemDefault {
+  cursor: pointer;
+  color: var(--mantine-color-neutral-9);
+  font-weight: 600;
+
+  &:hover {
+    color: var(--mantine-color-primary-6);
+  }
+}
+.activeMenuItemDefault {
+  cursor: pointer;
+  color: var(--mantine-color-primary-6);
+  font-weight: 600;
+}

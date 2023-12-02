@@ -1,8 +1,8 @@
 import { Box } from '@mantine/core';
 import { Outlet } from 'react-router-dom';
 import { Footer } from '@components/common/Footer';
-import { Navbar } from '@components/common/Navbar';
 import { PageLoading } from '@components/loading';
+import { Navbar } from '@components/navbar/Navbar';
 import { LAYOUT_PADDING } from '@config/const';
 import { useAppSetup } from '@hooks/useAppSetup';
 
