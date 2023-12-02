@@ -19,3 +19,7 @@ export const MENU_ITEM_TYPE = {
   DEFAULT: 'default',
   BUTTON: 'button',
 };
+
+export const LAYOUT_PADDING = { base: '3%', sm: '5%', md: '7%', lg: '7%' };
+
+export const CONTENT_SPACING = { base: 'md', sm: 'lg', md: 70, lg: 70 };

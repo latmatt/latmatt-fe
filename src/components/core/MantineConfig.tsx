@@ -3,6 +3,7 @@ import { ModalsProvider } from '@mantine/modals';
 import { Notifications } from '@mantine/notifications';
 import { theme } from './theme';
 import '@mantine/core/styles.css';
+import '@mantine/carousel/styles.css';
 
 interface MantineConfigProps {
   children: React.ReactNode;

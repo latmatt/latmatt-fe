@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { Page404 } from '@components/page';
-import { AuthLayout, RootLayout } from '@layouts';
+import { AuthLayout, DefaultLayout, RootLayout } from '@layouts';
 import {
   CreatePasswordPage,
   ForgetPasswordPage,
@@ -15,7 +15,7 @@ import { TermsAndConditions } from '@pages/termsAndConditions';
 export const router = createBrowserRouter([
   {
     path: '/auth',
-    element: <RootLayout />,
+    element: <DefaultLayout />,
     children: [
       {
         path: 'login',

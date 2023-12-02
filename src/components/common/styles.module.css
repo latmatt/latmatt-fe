@@ -16,3 +16,13 @@
   color: var(--mantine-color-primary-6);
   font-weight: 600;
 }
+
+.footerLink {
+  cursor: pointer;
+}
+
+.footerDisplay {
+  @media (max-width: $mantine-breakpoint-xs) {
+    display: none;
+  }
+}

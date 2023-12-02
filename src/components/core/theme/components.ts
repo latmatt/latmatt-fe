@@ -1,3 +1,4 @@
+import { Carousel } from '@mantine/carousel';
 import {
   Button,
   TextInput,
@@ -30,6 +31,22 @@ export const components = {
   TabsTab: Tabs.Tab.extend({
     defaultProps: {
       fz: 'lg',
+    },
+  }),
+  Carousel: Carousel.extend({
+    defaultProps: {
+      withIndicators: true,
+
+      slideSize: {
+        base: '50%',
+        sm: '33.333333%',
+        md: '33.333333%',
+        lg: '25%',
+      },
+      slideGap: 'md',
+      loop: true,
+      align: 'start',
+      slidesToScroll: 1,
     },
   }),
 };

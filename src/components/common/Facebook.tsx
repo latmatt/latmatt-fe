@@ -3,8 +3,9 @@ import FacebookImg from '@assets/images/common/facebook.png';
 
 interface Props {
   w?: string | number;
+  h?: string | number;
 }
 
-export function Facebook({ w }: Props) {
-  return <Image src={FacebookImg} maw={w} alt="Random image" />;
+export function Facebook({ w = 'auto', h = 'auto' }: Props) {
+  return <Image src={FacebookImg} w={w} h={h} alt="Random image" />;
 }
