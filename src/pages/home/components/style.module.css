@@ -1,0 +1,8 @@
+.searchbar {
+  border: 1px solid var(--mantine-color-neutral-6);
+  border-radius: var(--mantine-spacing-md);
+}
+
+.borderRight {
+  border-right: 1px solid var(--mantine-color-neutral-6);
+}

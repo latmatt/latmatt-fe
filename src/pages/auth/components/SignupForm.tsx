@@ -3,7 +3,7 @@ import { useForm, zodResolver } from '@mantine/form';
 import { Link, useNavigate } from 'react-router-dom';
 import { Apple, Facebook, Google, LogoSlogan } from '@components/common';
 import { PhoneInput } from '@components/input';
-import { LOCAL_STORAGE_KEYS } from '@config/const';
+import { LOCAL_STORAGE_KEYS, OTP_TYPES } from '@config/const';
 import { useLocalStorage } from '@hooks/useLocalStorage';
 import { signUpSchema } from '@utils/schema';
 import classes from './styles.module.css';
@@ -34,7 +34,10 @@ export function SignupForm() {
       },
       {
         onSuccess: () => {
-          set(LOCAL_STORAGE_KEYS.REGISTER, value);
+          set(LOCAL_STORAGE_KEYS.AUTH_INFO, {
+            type: OTP_TYPES.REGISTER,
+            ...value,
+          });
           navigate('/auth/otp');
         },
       }

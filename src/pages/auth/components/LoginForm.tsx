@@ -29,7 +29,7 @@ export function LoginForm() {
     mutate(values, {
       onSuccess: (data) => {
         setAuth(data.headers.jwt_token, data.headers.refresh_token);
-        navigate('/home');
+        navigate('/');
       },
     });
   }
@@ -61,7 +61,7 @@ export function LoginForm() {
             <Text
               className={classes.forgetPassword}
               ta="end"
-              onClick={() => navigate('/forget-password')}
+              onClick={() => navigate('/auth/forget-password')}
             >
               forget password?
             </Text>

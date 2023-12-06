@@ -19,6 +19,7 @@ export function NavbarItem({ label, to }: Props) {
             ? classes.activeMenuItemDefault
             : classes.menuItemDefault
         }
+        // c={location.pathname === to ? 'primary.6' : 'neutral.6'}
       >
         {label}
       </Text>

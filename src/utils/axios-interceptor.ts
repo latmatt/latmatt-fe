@@ -7,7 +7,6 @@ const API_URL = import.meta.env.VITE_API_URL ?? '';
 
 export const setupResponseInterceptor = () => {
   axios.interceptors.response.use(
-    // eslint-disable-next-line no-console
     (response: AxiosResponse) => response,
     (error: AxiosError) => {
       if (error?.code === 'ERR_NETWORK') {

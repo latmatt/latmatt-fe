@@ -1,13 +1,12 @@
-export const API_URL = import.meta.env.VITE_API_URL ?? '';
-
 export const AUTH_TABS = ['Sign up', 'Log in'];
 
 export const LOCAL_STORAGE_KEYS = {
-  REGISTER: 'register',
+  AUTH_INFO: 'temp',
 };
 
 export const OTP_TYPES = {
   REGISTER: 'SIGN_UP',
+  FORGOT_PASSWORD: 'FORGOT_PASSWORD',
 };
 
 export const COOKIE_KEYS = {

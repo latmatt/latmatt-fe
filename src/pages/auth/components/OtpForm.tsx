@@ -24,15 +24,27 @@ export function OtpForm() {
   });
 
   const handleSubmit = (value: FormValues) => {
-    const data = get(LOCAL_STORAGE_KEYS.REGISTER);
+    const data = get(LOCAL_STORAGE_KEYS.AUTH_INFO);
     mutate(
       {
         phoneNumber: data?.phoneNumber,
         otp: value.otp,
-        type: OTP_TYPES.REGISTER,
+        type: data?.type,
       },
       {
-        onSuccess: () => navigate('/auth/create-password'),
+        // eslint-disable-next-line @typescript-eslint/no-shadow
+        onSuccess: (data) => {
+          switch (data.data.data.type) {
+            case OTP_TYPES.REGISTER:
+              navigate('/auth/create-password');
+              break;
+            case OTP_TYPES.FORGOT_PASSWORD:
+              navigate('/auth/reset-password');
+              break;
+            default:
+              navigate('/auth/create-password');
+          }
+        },
       }
     );
   };

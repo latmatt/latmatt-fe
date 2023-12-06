@@ -3,6 +3,8 @@ import { useForm, zodResolver } from '@mantine/form';
 import { useNavigate } from 'react-router-dom';
 import { LogoSlogan } from '@components/common';
 import { PhoneInput } from '@components/input';
+import { LOCAL_STORAGE_KEYS, OTP_TYPES } from '@config/const';
+import { useLocalStorage } from '@hooks/useLocalStorage';
 import { forgetPasswordSchema } from '@utils/schema';
 import { useGetOtp } from '../query';
 
@@ -13,6 +15,7 @@ interface FormValues {
 export function ForgetPasswordForm() {
   const navigate = useNavigate();
   const { mutate, isLoading } = useGetOtp();
+  const { set } = useLocalStorage();
 
   const form = useForm<FormValues>({
     initialValues: {
@@ -22,9 +25,20 @@ export function ForgetPasswordForm() {
   });
 
   function handleSubmit(values: FormValues) {
-    mutate(values, {
-      onSuccess: () => navigate('/auth/otp'),
-    });
+    mutate(
+      {
+        phoneNumber: values.phoneNumber,
+      },
+      {
+        onSuccess: () => {
+          set(LOCAL_STORAGE_KEYS.AUTH_INFO, {
+            type: OTP_TYPES.FORGOT_PASSWORD,
+            ...values,
+          });
+          navigate('/auth/otp');
+        },
+      }
+    );
   }
 
   return (

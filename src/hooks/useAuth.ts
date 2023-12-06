@@ -21,7 +21,7 @@ export function useAuthRoute() {
   useEffect(() => {
     const auth = getAuth();
     if (auth) {
-      navigate('/home');
+      navigate('/');
     }
   }, [navigate, pathname]);
 }

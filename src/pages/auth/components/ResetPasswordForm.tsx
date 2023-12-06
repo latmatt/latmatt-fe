@@ -1,6 +1,9 @@
 import { Button, Stack, PasswordInput, Box } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
+import { useNavigate } from 'react-router-dom';
 import { LogoSlogan } from '@components/common';
+import { LOCAL_STORAGE_KEYS } from '@config/const';
+import { useLocalStorage } from '@hooks/useLocalStorage';
 import { resetPasswordSchema } from '@utils/schema';
 import { useResetPassword } from '../query';
 
@@ -10,7 +13,9 @@ interface FormValues {
 }
 
 export function ResetPasswordForm() {
+  const navigate = useNavigate();
   const { mutate, isLoading } = useResetPassword();
+  const { get } = useLocalStorage();
 
   const form = useForm<FormValues>({
     initialValues: {
@@ -21,10 +26,16 @@ export function ResetPasswordForm() {
   });
 
   function handleSubmit(values: FormValues) {
-    mutate({
-      newPassword: values.newPassword,
-      phoneNumber: '09899587877',
-    });
+    const data = get(LOCAL_STORAGE_KEYS.AUTH_INFO);
+    mutate(
+      {
+        newPassword: values.newPassword,
+        phoneNumber: data?.phoneNumber,
+      },
+      {
+        onSuccess: () => navigate('/auth/login'),
+      }
+    );
   }
 
   return (

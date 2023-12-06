@@ -28,7 +28,7 @@ export function CreatePasswordForm() {
   });
 
   function handleSubmit(values: FormValues) {
-    const data = get(LOCAL_STORAGE_KEYS.REGISTER);
+    const data = get(LOCAL_STORAGE_KEYS.AUTH_INFO);
 
     mutate(
       {
@@ -42,7 +42,9 @@ export function CreatePasswordForm() {
         profileImage: '',
       },
       {
-        onSuccess: () => navigate('/home'),
+        onSuccess: () => {
+          navigate('/');
+        },
       }
     );
   }

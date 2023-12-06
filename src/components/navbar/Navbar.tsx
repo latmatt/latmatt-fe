@@ -8,10 +8,11 @@ import {
   Button,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { IconMenu2 } from '@tabler/icons';
+import { IconMenu2, IconUserCircle, IconBell } from '@tabler/icons';
 import { useNavigate } from 'react-router-dom';
 import { LAYOUT_PADDING } from '@config/const';
 import { MENU_ITEMS } from '@config/menu';
+import { usePermission } from '@hooks/usePermission';
 import { MobileNavbar } from './MobileNavbar';
 import { NavbarItem } from './NavbarItem';
 import classes from './style.module.css';
@@ -19,6 +20,7 @@ import { Logo } from '../common/Logo';
 
 export function Navbar() {
   const navigate = useNavigate();
+  const { isAuthedUser } = usePermission();
   const [opened, { open, close }] = useDisclosure(false);
 
   return (
@@ -33,13 +35,31 @@ export function Navbar() {
             {MENU_ITEMS.map((item) => (
               <NavbarItem key={item.to} to={item.to} label={item.label} />
             ))}
-            <Button onClick={() => navigate('/auth/login')}>Sign up</Button>
+
+            {isAuthedUser ? (
+              <>
+                <Button
+                  variant="outline"
+                  color="neutral.8"
+                  rightSection={<IconUserCircle />}
+                >
+                  Hello
+                </Button>
+
+                <ActionIcon variant="white" color="neutral.8">
+                  <IconBell />
+                </ActionIcon>
+              </>
+            ) : (
+              <Button onClick={() => navigate('/auth/login')}>Sign up</Button>
+            )}
 
             <Select
               size="lg"
+              variant="unstyled"
               withCheckIcon={false}
               defaultValue="EN"
-              maw={100}
+              maw={80}
               data={['EN', 'MM']}
             />
           </Group>
