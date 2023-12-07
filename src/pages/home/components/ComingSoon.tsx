@@ -1,15 +1,15 @@
 import { Carousel } from '@mantine/carousel';
 import { Box } from '@mantine/core';
-import fireLottie from '@assets/images/lottie/fire.json';
+import rocketLottie from '@assets/images/lottie/Rocket.json';
 import { ItemCard } from '@components/card';
 import { TRENDINGS } from '@config/mocks';
 import { CarosalTitle } from './CarosalTitle';
 import classes from './carousal.module.css';
 
-export function Trending() {
+export function ComingSoon() {
   return (
     <Box>
-      <CarosalTitle title="Trending" lottie={fireLottie} />
+      <CarosalTitle title="Coming Soon" lottie={rocketLottie} />
 
       <Carousel classNames={classes}>
         {TRENDINGS.map((trending) => (

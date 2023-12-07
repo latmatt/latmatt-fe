@@ -11,3 +11,22 @@
     display: none;
   }
 }
+
+.floatingWrapper {
+  position: relative;
+}
+
+.floatingItem {
+  position: fixed;
+  bottom: 100px;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stoppedFloatingItem {
+  position: relative;
+  width: 100%;
+}

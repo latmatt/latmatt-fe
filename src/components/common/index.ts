@@ -7,3 +7,4 @@ export * from './Apple';
 export * from './LogoWhite';
 export * from './Playstore';
 export * from './Appstore';
+export * from './LatestItem';

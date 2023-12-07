@@ -15,6 +15,7 @@ export function SearchBar() {
             className={classes.borderRight}
           />
         </Grid.Col>
+
         <Grid.Col span={{ base: 12, md: 3 }}>
           <Select
             placeholder="Location"
@@ -38,6 +39,30 @@ export function SearchBar() {
           <Button radius={0} fullWidth>
             Search
           </Button>
+        </Grid.Col>
+      </Grid>
+
+      <Grid gutter="md" className={classes.mobileSearchbar}>
+        <Grid.Col span={{ base: 6 }}>
+          <Select
+            placeholder="Location"
+            data={['Yangon', 'Mandalay', 'Taunggyi']}
+          />
+        </Grid.Col>
+
+        <Grid.Col span={{ base: 6 }}>
+          <Select placeholder="Genres" data={CATEGORIES.map((c) => c.name)} />
+        </Grid.Col>
+
+        <Grid.Col span={{ base: 12 }}>
+          <TextInput
+            leftSection={<IconSearch />}
+            placeholder="Search for artists, events and funs"
+          />
+        </Grid.Col>
+
+        <Grid.Col span={{ base: 12 }}>
+          <Button fullWidth>Search</Button>
         </Grid.Col>
       </Grid>
     </form>

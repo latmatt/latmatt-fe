@@ -1,8 +1,11 @@
 import { Space } from '@mantine/core';
+import { LatestItem } from '@components/common';
 import { CONTENT_SPACING } from '@config/const';
+import { usePermission } from '@hooks/usePermission';
 import {
   Announcements,
   Categories,
+  ComingSoon,
   EarlyAccess,
   Features,
   SearchBar,
@@ -10,6 +13,8 @@ import {
 } from './components';
 
 export function HomePage() {
+  const { isAuthedUser } = usePermission();
+
   return (
     <>
       <Space h={CONTENT_SPACING} />
@@ -26,6 +31,10 @@ export function HomePage() {
 
       <Space h={CONTENT_SPACING} />
 
+      {isAuthedUser && <ComingSoon />}
+
+      <Space h={CONTENT_SPACING} />
+
       <Trending />
 
       <Space h={CONTENT_SPACING} />
@@ -35,6 +44,10 @@ export function HomePage() {
       <Space h={CONTENT_SPACING} />
 
       <Features />
+
+      <Space h={CONTENT_SPACING} />
+
+      <LatestItem />
 
       <Space h={CONTENT_SPACING} />
     </>

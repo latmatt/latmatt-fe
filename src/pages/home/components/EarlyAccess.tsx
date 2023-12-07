@@ -1,17 +1,17 @@
 import { Carousel } from '@mantine/carousel';
-import { Box, Title } from '@mantine/core';
+import { Box } from '@mantine/core';
+import birdLottie from '@assets/images/lottie/Bird.json';
 import { ItemCard } from '@components/card';
 import { TRENDINGS } from '@config/mocks';
-import classes from './carousal.module.css';
+import { CarosalTitle } from './CarosalTitle';
+import caroclasses from './carousal.module.css';
 
 export function EarlyAccess() {
   return (
     <Box>
-      <Title order={4} ta="center" mb="xl">
-        Early Accesses
-      </Title>
+      <CarosalTitle title="Early Access" lottie={birdLottie} />
 
-      <Carousel classNames={classes}>
+      <Carousel classNames={caroclasses}>
         {TRENDINGS.map((trending) => (
           <Carousel.Slide key={trending.title}>
             <ItemCard

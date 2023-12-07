@@ -4,3 +4,5 @@ export * from './EarlyAccess';
 export * from './Features';
 export * from './SearchBar';
 export * from './Trending';
+export * from './ComingSoon';
+export * from './CarosalTitle';
