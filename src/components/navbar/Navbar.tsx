@@ -27,7 +27,7 @@ export function Navbar() {
     <>
       <Paper shadow="xs" py="sm" px={LAYOUT_PADDING}>
         <Group justify="space-between">
-          <Box h={60}>
+          <Box h={50}>
             <Logo />
           </Box>
 
@@ -65,6 +65,12 @@ export function Navbar() {
           </Group>
 
           <Group className={classes.mobileNavbar}>
+            {isAuthedUser && (
+              <ActionIcon variant="white" color="neutral.8">
+                <IconBell />
+              </ActionIcon>
+            )}
+
             <ActionIcon onClick={open} variant="white">
               <IconMenu2 />
             </ActionIcon>

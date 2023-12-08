@@ -47,7 +47,7 @@ export const components = {
       withIndicators: true,
 
       slideSize: {
-        base: '50%',
+        base: '80%',
         sm: '33.333333%',
         md: '33.333333%',
         lg: '25%',

@@ -1,7 +1,12 @@
 import { AspectRatio, Grid, Image, Text } from '@mantine/core';
 import { CATEGORIES } from '@config/mocks';
+import { useGetAllEvents } from '../queries';
 
 export function Categories() {
+  const { data } = useGetAllEvents();
+
+  console.log('all events', data);
+
   return (
     <Grid>
       {CATEGORIES.map((cat) => (

@@ -5,8 +5,12 @@ import { ItemCard } from '@components/card';
 import { TRENDINGS } from '@config/mocks';
 import { CarosalTitle } from './CarosalTitle';
 import classes from './carousal.module.css';
+import { useGetComingSoonEvents } from '../queries';
 
 export function ComingSoon() {
+  const { data } = useGetComingSoonEvents({ size: 6 });
+  console.log('coming soon', data);
+
   return (
     <Box>
       <CarosalTitle title="Coming Soon" lottie={rocketLottie} />

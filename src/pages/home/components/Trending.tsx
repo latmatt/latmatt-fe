@@ -5,8 +5,12 @@ import { ItemCard } from '@components/card';
 import { TRENDINGS } from '@config/mocks';
 import { CarosalTitle } from './CarosalTitle';
 import classes from './carousal.module.css';
+import { useGetTrendingEvents } from '../queries';
 
 export function Trending() {
+  const { data } = useGetTrendingEvents({ size: 6 });
+  console.log('trending', data);
+
   return (
     <Box>
       <CarosalTitle title="Trending" lottie={fireLottie} />

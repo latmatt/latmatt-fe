@@ -42,4 +42,8 @@ declare global {
     label: string;
     value: string | null | undefined;
   }
+
+  export interface EventListParamType {
+    size?: number;
+  }
 }

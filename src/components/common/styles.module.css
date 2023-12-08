@@ -30,3 +30,9 @@
   position: relative;
   width: 100%;
 }
+
+.floatingImg {
+  @media (max-width: $mantine-breakpoint-xs) {
+    display: none;
+  }
+}

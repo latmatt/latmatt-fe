@@ -48,14 +48,18 @@ export function LatestItem() {
           <Group justify="space-between">
             <Group>
               <Image
+                className={classes.floatingImg}
                 w={100}
                 h={80}
                 fit="cover"
                 src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-7.png"
               />
               <Stack gap={0}>
-                <Text fw="bold">Hello</Text>
-                <Text>Hello</Text>
+                <Text fw="bold">To Sir, With Love 1st Fan Meeting</Text>
+                <Text className={classes.floatingImg}>
+                  You recently viewed this concert, continue your process and
+                  have fun.
+                </Text>
               </Stack>
             </Group>
 

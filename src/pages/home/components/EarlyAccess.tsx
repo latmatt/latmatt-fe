@@ -5,8 +5,12 @@ import { ItemCard } from '@components/card';
 import { TRENDINGS } from '@config/mocks';
 import { CarosalTitle } from './CarosalTitle';
 import caroclasses from './carousal.module.css';
+import { useGetEarlyAccessEvents } from '../queries';
 
 export function EarlyAccess() {
+  const { data } = useGetEarlyAccessEvents({ size: 6 });
+  console.log('early access', data);
+
   return (
     <Box>
       <CarosalTitle title="Early Access" lottie={birdLottie} />
