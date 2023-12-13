@@ -1,6 +1,6 @@
 import { Carousel } from '@mantine/carousel';
 import { Box } from '@mantine/core';
-import rocketLottie from '@assets/images/lottie/Rocket.json';
+import rocketLottie from '@assets/images/lottie/rocket.json';
 import { ItemCard } from '@components/card';
 import { TRENDINGS } from '@config/mocks';
 import { CarosalTitle } from './CarosalTitle';

@@ -1,6 +1,6 @@
 import { Carousel } from '@mantine/carousel';
 import { Box } from '@mantine/core';
-import birdLottie from '@assets/images/lottie/Bird.json';
+import birdLottie from '@assets/images/lottie/bird.json';
 import { ItemCard } from '@components/card';
 import { CardLoading } from '@components/loading/CardListLoading';
 import { CarosalTitle } from './CarosalTitle';
