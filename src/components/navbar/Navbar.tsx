@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import { LAYOUT_PADDING } from '@config/const';
 import { MENU_ITEMS } from '@config/menu';
 import { usePermission } from '@hooks/usePermission';
+import { removeAuth } from '@utils/auth';
 import { MobileNavbar } from './MobileNavbar';
 import { NavbarItem } from './NavbarItem';
 import classes from './style.module.css';
@@ -22,6 +23,10 @@ export function Navbar() {
   const navigate = useNavigate();
   const { isAuthedUser } = usePermission();
   const [opened, { open, close }] = useDisclosure(false);
+
+  const handleLogout = () => {
+    removeAuth();
+  };
 
   return (
     <>
@@ -86,8 +91,9 @@ export function Navbar() {
         overlayProps={{ backgroundOpacity: 0.5 }}
         withCloseButton={false}
         padding={0}
+        bg="green"
       >
-        <MobileNavbar />
+        <MobileNavbar logout={handleLogout} />
       </Drawer>
     </>
   );
