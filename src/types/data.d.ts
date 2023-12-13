@@ -46,4 +46,35 @@ declare global {
   export interface EventListParamType {
     size?: number;
   }
+
+  export interface Category {
+    id: string;
+    name: string;
+    image: string;
+    description: string;
+  }
+
+  export interface Event {
+    id: string;
+    title: string;
+    description: string;
+    startDate: string;
+    startTime: string;
+    endDate: string;
+    endTime: string;
+    earlyAccessExpiredDate: string;
+    image: string;
+    coverImage: string;
+    userClickCount: number;
+    location: {
+      id: string;
+      name: string;
+      street: string;
+      city: string;
+      state: string;
+      zipCode: string;
+      mapLink: string;
+      phone: string;
+    };
+  }
 }

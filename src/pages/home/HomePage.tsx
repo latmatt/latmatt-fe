@@ -29,9 +29,12 @@ export function HomePage() {
 
       <Announcements />
 
-      <Space h={CONTENT_SPACING} />
-
-      {isAuthedUser && <ComingSoon />}
+      {isAuthedUser && (
+        <>
+          <Space h={CONTENT_SPACING} />
+          <ComingSoon />
+        </>
+      )}
 
       <Space h={CONTENT_SPACING} />
 

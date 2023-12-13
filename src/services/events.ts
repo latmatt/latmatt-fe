@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export function events() {
-  return axios.get('/events');
+export function events({ size = 6 }: EventListParamType) {
+  return axios.get('/events', { params: { size, page: 0 } });
 }
 
 export function trendingEvents({ size = 6 }: EventListParamType) {

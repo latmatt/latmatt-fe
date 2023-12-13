@@ -1,10 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import {
+  categoryKeys,
   comingSoonKeys,
   earlyAccessKeys,
   eventsKeys,
   trendingKeys,
 } from '@config/query-keys';
+import { categories } from '@services/categories';
 import {
   comingSoonEvents,
   earlyAccessEvents,
@@ -12,8 +14,18 @@ import {
   trendingEvents,
 } from '@services/events';
 
-export function useGetAllEvents() {
-  return useQuery({ queryKey: eventsKeys.all, queryFn: events });
+export function useGetCategories() {
+  return useQuery({
+    queryKey: categoryKeys.all,
+    queryFn: categories,
+  });
+}
+
+export function useGetAllEvents(params: EventListParamType) {
+  return useQuery({
+    queryKey: [eventsKeys.all, params],
+    queryFn: () => events(params),
+  });
 }
 
 export function useGetTrendingEvents(params: EventListParamType) {
