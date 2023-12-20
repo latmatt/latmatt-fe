@@ -37,3 +37,29 @@ export const categoryKeys = {
   details: () => [...categoryKeys.all, 'detail'] as const,
   detail: (id: string) => [...categoryKeys.details(), id] as const,
 };
+
+export const genresKeys = {
+  all: ['genres'] as const,
+  lists: () => [...genresKeys.all, 'list'] as const,
+  list: (filters: string) => [...genresKeys.lists(), { filters }] as const,
+  details: () => [...genresKeys.all, 'detail'] as const,
+  detail: (id: string) => [...genresKeys.details(), id] as const,
+};
+
+export const trendingByCategoryKeys = {
+  all: ['trendingByCat'] as const,
+  lists: () => [...trendingByCategoryKeys.all, 'list'] as const,
+  list: (filters: string) =>
+    [...trendingByCategoryKeys.lists(), { filters }] as const,
+  details: () => [...trendingByCategoryKeys.all, 'detail'] as const,
+  detail: (id: string) => [...trendingByCategoryKeys.details(), id] as const,
+};
+
+export const evnetsByCategoryKeys = {
+  all: ['eventsByCat'] as const,
+  lists: () => [...evnetsByCategoryKeys.all, 'list'] as const,
+  list: (filters: string) =>
+    [...evnetsByCategoryKeys.lists(), { filters }] as const,
+  details: () => [...evnetsByCategoryKeys.all, 'detail'] as const,
+  detail: (id: string) => [...evnetsByCategoryKeys.details(), id] as const,
+};

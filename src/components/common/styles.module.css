@@ -36,3 +36,7 @@
     display: none;
   }
 }
+
+.flip {
+  transform: scaleX(-1);
+}

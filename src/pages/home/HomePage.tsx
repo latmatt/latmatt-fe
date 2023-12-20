@@ -1,19 +1,29 @@
 import { Space } from '@mantine/core';
-import { LatestItem } from '@components/common';
+import birdLottie from '@assets/images/lottie/bird.json';
+import fireLottie from '@assets/images/lottie/fire.json';
+import rocketLottie from '@assets/images/lottie/rocket.json';
+import { BannerCarosal, ItemCarosel, LatestItem } from '@components/common';
 import { CONTENT_SPACING } from '@config/const';
 import { usePermission } from '@hooks/usePermission';
+import { Categories, Features, SearchBar } from './components';
 import {
-  Announcements,
-  Categories,
-  ComingSoon,
-  EarlyAccess,
-  Features,
-  SearchBar,
-  Trending,
-} from './components';
+  useGetComingSoonEvents,
+  useGetEarlyAccessEvents,
+  useGetTrendingEvents,
+} from './queries';
 
 export function HomePage() {
   const { isAuthedUser } = usePermission();
+
+  const { data: trendings, isLoading: trendingLoading } = useGetTrendingEvents({
+    size: 6,
+  });
+
+  const { data: earlyaccess, isLoading: earlyaccessLoading } =
+    useGetEarlyAccessEvents({ size: 6 });
+
+  const { data: comingSoon, isLoading: comingSoonLoading } =
+    useGetComingSoonEvents({ size: 6 });
 
   return (
     <>
@@ -27,22 +37,37 @@ export function HomePage() {
 
       <Space h={CONTENT_SPACING} />
 
-      <Announcements />
+      <BannerCarosal />
 
       {isAuthedUser && (
         <>
           <Space h={CONTENT_SPACING} />
-          <ComingSoon />
+          <ItemCarosel
+            title="Coming Soon"
+            data={comingSoon?.data.data}
+            lottieGif={rocketLottie}
+            isLoading={comingSoonLoading}
+          />
         </>
       )}
 
       <Space h={CONTENT_SPACING} />
 
-      <Trending />
+      <ItemCarosel
+        title="Trending"
+        data={trendings?.data.data}
+        lottieGif={fireLottie}
+        isLoading={trendingLoading}
+      />
 
       <Space h={CONTENT_SPACING} />
 
-      <EarlyAccess />
+      <ItemCarosel
+        title="Early Access"
+        data={earlyaccess?.data.data}
+        lottieGif={birdLottie}
+        isLoading={earlyaccessLoading}
+      />
 
       <Space h={CONTENT_SPACING} />
 

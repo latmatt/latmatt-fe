@@ -1,20 +1,23 @@
 import { Card, Text, Image, Group, Stack, Box } from '@mantine/core';
+import { useNavigate } from 'react-router-dom';
 import classes from './style.module.css';
 
 interface Props {
-  title: string;
-  image: string;
-  date: string;
-  city: string;
-  location: string;
-  time: string;
+  item: Event;
 }
 
-export function ItemCard({ title, image, date, city, location, time }: Props) {
+export function ItemCard({ item }: Props) {
+  const navigate = useNavigate();
+
   return (
-    <Card className={classes.card} withBorder radius="lg">
+    <Card
+      onClick={() => navigate(`/events/${item.id}`)}
+      className={classes.card}
+      withBorder
+      radius="lg"
+    >
       <Card.Section className={classes.imageSection}>
-        <Image src={image} h={200} alt="No way!" />
+        <Image src={item.image} h={200} alt="No way!" />
         <Box className={classes.imageSlideup}>
           <Text c="neutral.0" fw="bold">
             Check Details
@@ -23,21 +26,21 @@ export function ItemCard({ title, image, date, city, location, time }: Props) {
       </Card.Section>
 
       <Text fw="bold" fz="lg" my="md">
-        {title}
+        {item.title}
       </Text>
 
       <Group justify="space-between">
         <Stack gap={0}>
-          <Text fz="sm">{date}</Text>
-          <Text fz="sm">{city}</Text>
+          <Text fz="sm">{item.startDate}</Text>
+          <Text fz="sm">{item.location.city}</Text>
         </Stack>
 
         <Stack gap={0}>
           <Text fz="sm" ta="right">
-            {location}
+            {item.location.state}
           </Text>
           <Text fz="sm" ta="right">
-            {time}
+            {item.startTime}
           </Text>
         </Stack>
       </Group>

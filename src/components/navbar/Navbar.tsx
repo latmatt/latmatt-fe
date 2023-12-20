@@ -7,7 +7,7 @@ import {
   Drawer,
   Button,
 } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
+import { useDisclosure, useElementSize } from '@mantine/hooks';
 import { IconMenu2, IconUserCircle, IconBell } from '@tabler/icons';
 import { useNavigate } from 'react-router-dom';
 import { LAYOUT_PADDING } from '@config/const';
@@ -19,8 +19,14 @@ import { NavbarItem } from './NavbarItem';
 import classes from './style.module.css';
 import { Logo } from '../common/Logo';
 
-export function Navbar() {
+interface Props {
+  isTransparent?: boolean;
+}
+
+export function Navbar({ isTransparent = false }: Props) {
   const navigate = useNavigate();
+  const { ref, height } = useElementSize();
+  console.log('height', height);
   const { isAuthedUser } = usePermission();
   const [opened, { open, close }] = useDisclosure(false);
 
@@ -30,7 +36,15 @@ export function Navbar() {
 
   return (
     <>
-      <Paper shadow="xs" py="sm" px={LAYOUT_PADDING}>
+      <Box h={height} mb="lg" />
+      <Paper
+        ref={ref}
+        bg={isTransparent ? 'transparent' : 'white'}
+        shadow="xs"
+        py="sm"
+        px={LAYOUT_PADDING}
+        className={classes.desktopNavWrapper}
+      >
         <Group justify="space-between">
           <Box h={50}>
             <Logo />
@@ -38,7 +52,12 @@ export function Navbar() {
 
           <Group className={classes.desktopNavbar} justify="flex-end" gap="xl">
             {MENU_ITEMS.map((item) => (
-              <NavbarItem key={item.to} to={item.to} label={item.label} />
+              <NavbarItem
+                isTransparent={isTransparent}
+                key={item.to}
+                to={item.to}
+                label={item.label}
+              />
             ))}
 
             {isAuthedUser ? (
@@ -62,6 +81,11 @@ export function Navbar() {
             <Select
               size="lg"
               variant="unstyled"
+              styles={{
+                input: {
+                  color: isTransparent ? 'white' : 'black',
+                },
+              }}
               withCheckIcon={false}
               defaultValue="EN"
               maw={80}

@@ -1,5 +1,5 @@
-import { Grid, Skeleton } from '@mantine/core';
 import { useMemo, useState } from 'react';
+import { Grid, Skeleton } from '@mantine/core';
 
 interface Props {
   countNumber: number;

@@ -45,6 +45,7 @@ declare global {
 
   export interface EventListParamType {
     size?: number;
+    page?: number;
   }
 
   export interface Category {
@@ -75,6 +76,19 @@ declare global {
       zipCode: string;
       mapLink: string;
       phone: string;
+    };
+  }
+
+  export interface Genres {
+    id: string;
+    name: string;
+    image: string;
+    description: string | null;
+    eventType: {
+      id: string;
+      name: string;
+      image: string;
+      description: string;
     };
   }
 }

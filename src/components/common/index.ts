@@ -1,4 +1,3 @@
-export * from './Amount';
 export * from './Search';
 export * from './LogoSlogan';
 export * from './Facebook';
@@ -8,3 +7,6 @@ export * from './LogoWhite';
 export * from './Playstore';
 export * from './Appstore';
 export * from './LatestItem';
+export * from './BannerCarosal';
+export * from './ItemCarosel';
+export * from './ItemPagination';

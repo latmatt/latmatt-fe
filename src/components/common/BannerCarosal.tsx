@@ -4,7 +4,7 @@ import { Image } from '@mantine/core';
 import Autoplay from 'embla-carousel-autoplay';
 import { ANNOUNCEMENTS } from '@config/mocks';
 
-export function Announcements() {
+export function BannerCarosal() {
   const autoplay = useRef(Autoplay({ delay: 4000 }));
 
   return (

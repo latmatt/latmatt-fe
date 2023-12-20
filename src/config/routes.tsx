@@ -1,6 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { Page404 } from '@components/page';
-import { AuthLayout, DefaultLayout, RootLayout } from '@layouts';
+import {
+  AuthLayout,
+  CategoryLayout,
+  DefaultLayout,
+  EventLayout,
+  RootLayout,
+} from '@layouts';
 import {
   CreatePasswordPage,
   ForgetPasswordPage,
@@ -8,7 +14,9 @@ import {
   OtpPage,
   ResetPasswordPage,
 } from '@pages/auth';
+import { CategoryDetailPage } from '@pages/category-detail';
 import { DashboardPage } from '@pages/dashboard';
+import { EventDetailPage } from '@pages/event-detail';
 import { HomePage } from '@pages/home';
 import { TermsAndConditions } from '@pages/termsAndConditions';
 
@@ -62,6 +70,26 @@ export const router = createBrowserRouter([
       {
         path: 'support',
         element: <HomePage />,
+      },
+    ],
+  },
+  {
+    path: '/categories',
+    element: <CategoryLayout />,
+    children: [
+      {
+        path: ':id',
+        element: <CategoryDetailPage />,
+      },
+    ],
+  },
+  {
+    path: '/events',
+    element: <EventLayout />,
+    children: [
+      {
+        path: ':id',
+        element: <EventDetailPage />,
       },
     ],
   },

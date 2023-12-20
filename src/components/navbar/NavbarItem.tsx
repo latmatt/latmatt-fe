@@ -3,11 +3,12 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import classes from './style.module.css';
 
 interface Props {
+  isTransparent?: boolean;
   label: string;
   to: string;
 }
 
-export function NavbarItem({ label, to }: Props) {
+export function NavbarItem({ isTransparent, label, to }: Props) {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -19,7 +20,7 @@ export function NavbarItem({ label, to }: Props) {
             ? classes.activeMenuItemDefault
             : classes.menuItemDefault
         }
-        // c={location.pathname === to ? 'primary.6' : 'neutral.6'}
+        c={isTransparent ? 'neutral.0' : 'neutral.8'}
       >
         {label}
       </Text>
