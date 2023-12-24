@@ -4,7 +4,6 @@ import { Footer } from '@components/common/Footer';
 import { Navbar } from '@components/navbar/Navbar';
 import { CONTENT_SPACING, LAYOUT_PADDING } from '@config/const';
 import { BannerImg, Description, MetaInfo } from './components';
-import { useGetEventDetails } from './queries';
 
 export function EventDetailPage() {
   const [scroll] = useWindowScroll();
