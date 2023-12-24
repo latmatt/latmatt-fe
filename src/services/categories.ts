@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export function categories() {
-  return axios.get('/events/types');
+  return axios.get('/event-types');
 }
 
 export function genres() {

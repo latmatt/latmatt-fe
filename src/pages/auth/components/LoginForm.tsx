@@ -59,9 +59,9 @@ export function LoginForm() {
           />
           <Group justify="flex-end">
             <Text
-              className={classes.forgetPassword}
               ta="end"
               onClick={() => navigate('/auth/forget-password')}
+              className={classes.forgetPassword}
             >
               forget password?
             </Text>

@@ -44,7 +44,7 @@ export function HomePage() {
           <Space h={CONTENT_SPACING} />
           <ItemCarosel
             title="Coming Soon"
-            data={comingSoon?.data.data}
+            data={comingSoon?.data.content}
             lottieGif={rocketLottie}
             isLoading={comingSoonLoading}
           />
@@ -55,7 +55,7 @@ export function HomePage() {
 
       <ItemCarosel
         title="Trending"
-        data={trendings?.data.data}
+        data={trendings?.data.content}
         lottieGif={fireLottie}
         isLoading={trendingLoading}
       />
@@ -64,7 +64,7 @@ export function HomePage() {
 
       <ItemCarosel
         title="Early Access"
-        data={earlyaccess?.data.data}
+        data={earlyaccess?.data.content}
         lottieGif={birdLottie}
         isLoading={earlyaccessLoading}
       />

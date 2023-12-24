@@ -2,6 +2,7 @@
   cursor: pointer;
   display: inline;
   font-weight: bold;
+  color: red;
 
   &:hover {
     color: var(--mantine-color-primary-6);

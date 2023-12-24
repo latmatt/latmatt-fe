@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { Button, Stack, PasswordInput, Box, TextInput } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
 import { useNavigate } from 'react-router-dom';
@@ -26,6 +27,15 @@ export function CreatePasswordForm() {
     },
     validate: zodResolver(createPasswordSchema),
   });
+
+  useMemo(() => {
+    if (
+      form.values.password !== form.values.confirmPassword &&
+      form.values.confirmPassword.length > 0
+    ) {
+      form.setFieldError('confirmPassword', 'Passwords are not matched!');
+    }
+  }, [form]);
 
   function handleSubmit(values: FormValues) {
     const data = get(LOCAL_STORAGE_KEYS.AUTH_INFO);

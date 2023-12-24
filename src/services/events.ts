@@ -15,3 +15,15 @@ export function earlyAccessEvents({ size = 6 }: EventListParamType) {
 export function comingSoonEvents({ size = 6 }: EventListParamType) {
   return axios.get('/events/coming-soon', { params: { size } });
 }
+
+export function eventDetails({
+  size = 6,
+  page = 0,
+  eventGenreId,
+  eventTypeId,
+  id,
+}: EventDetailParamType) {
+  return axios.get('events', {
+    params: { size, page, eventGenreId, eventTypeId, id },
+  });
+}

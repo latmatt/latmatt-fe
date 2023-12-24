@@ -48,6 +48,14 @@ declare global {
     page?: number;
   }
 
+  export interface EventDetailParamType {
+    size?: number;
+    page?: number;
+    id: string;
+    eventTypeId: string;
+    eventGenreId: string;
+  }
+
   export interface Category {
     id: string;
     name: string;
