@@ -1,4 +1,4 @@
-import { showNotification } from '@mantine/notifications';
+import { notifications } from '@mantine/notifications';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { startsWith } from 'lodash-es';
 import { removeAuth } from './auth';
@@ -9,13 +9,6 @@ export const setupResponseInterceptor = () => {
   axios.interceptors.response.use(
     (response: AxiosResponse) => response,
     (error: AxiosError) => {
-      if (error?.code === 'ERR_NETWORK') {
-        showNotification({
-          color: 'red',
-          message: 'Network error',
-        });
-      }
-
       if (error?.response?.status && error?.response?.status === 401) {
         removeAuth();
       }
@@ -25,7 +18,7 @@ export const setupResponseInterceptor = () => {
         error?.response?.status >= 402 &&
         error?.response?.status <= 499
       ) {
-        showNotification({
+        notifications.show({
           color: 'red',
           message: (error?.response?.data as { message: string }).message,
         });

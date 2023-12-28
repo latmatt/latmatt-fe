@@ -1,17 +1,20 @@
 import { Text, Card, Stack, Image } from '@mantine/core';
-import icon from '@assets/images/svg/18plus.svg';
 
-export function EventInfoCard() {
+interface Props {
+  data: EventNotice;
+}
+
+export function EventInfoCard({ data }: Props) {
   return (
     <Card>
       <Stack gap="sm" align="center">
-        <Image src={icon} w={80} />
+        <Image src={data.iconUrl} w={80} />
 
         <Text ta="center" fw="bold">
-          Title
+          {data.title}
         </Text>
 
-        <Text ta="center">Saturday, March 30, 2024 4:00 PM - 12:00 AM</Text>
+        <Text ta="center">{data.description}</Text>
       </Stack>
     </Card>
   );

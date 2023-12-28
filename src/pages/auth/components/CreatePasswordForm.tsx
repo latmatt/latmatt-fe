@@ -92,7 +92,7 @@ export function CreatePasswordForm() {
             loading={isLoading}
             fullWidth
             type="submit"
-            disabled={!form.isValid()}
+            // disabled={!form.isValid()}
           >
             Submit
           </Button>

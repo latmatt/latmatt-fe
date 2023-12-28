@@ -1,51 +1,60 @@
 import { useState } from 'react';
 import { Space } from '@mantine/core';
+import { useParams } from 'react-router-dom';
 import fireLottie from '@assets/images/lottie/fire.json';
 import rocketLottie from '@assets/images/lottie/rocket.json';
-import { BannerCarosal, ItemPangination } from '@components/common';
-import { CONTENT_SPACING } from '@config/const';
-import { ItemCarosel } from '@pages/home/components';
-import { useGetComingSoonEvents } from '@pages/home/queries';
-import { ConcertTypes } from './components';
 import {
+  BannerCarosal,
+  ItemCarosel,
+  ItemPangination,
+} from '@components/common';
+import { CONTENT_SPACING } from '@config/const';
+// import { ConcertTypes } from './components';
+import {
+  useGetComingSoonEventsByCategory,
   useGetEventsByCategory,
-  useGetGenres,
+  // useGetGenres,
   useGetTrendingEventsByCategory,
 } from './queries';
 
 export function CategoryDetailPage() {
   const [eventActivePage, setEventActivePage] = useState<number>(0);
+  const { id } = useParams();
 
   const { data: comingSoon, isLoading: comingSoonLoading } =
-    useGetComingSoonEvents({ size: 6 });
+    useGetComingSoonEventsByCategory({ size: 6 }, id || '');
 
   const { data: trendings, isLoading: trendingLoading } =
-    useGetTrendingEventsByCategory({
-      size: 6,
-    });
+    useGetTrendingEventsByCategory(
+      {
+        size: 6,
+      },
+      id || ''
+    );
 
-  const { data: genres, isLoading: genresLoading } = useGetGenres();
+  // const { data: genres, isLoading: genresLoading } = useGetGenres();
 
-  // const { data: events, isLoading: eventLoading } = useGetEventsByCategory({
-  //   size: 12,
-  //   page: eventActivePage,
-  // });
+  const { data: events, isLoading: eventLoading } = useGetEventsByCategory({
+    size: 4,
+    page: eventActivePage,
+    eventTypeId: id,
+  });
 
-  // const handleEventPageChange = (page: number) => {
-  //   setEventActivePage(page);
-  // };
+  const handleEventPageChange = (page: number) => {
+    setEventActivePage(page);
+  };
 
   return (
     <>
-      <Space h={CONTENT_SPACING} />
+      {/* <Space h={CONTENT_SPACING} /> */}
 
-      <ConcertTypes data={genres?.data.data} isLoading={genresLoading} />
+      {/* <ConcertTypes data={genres?.data.data} isLoading={genresLoading} /> */}
 
       <Space h={CONTENT_SPACING} />
 
       <ItemCarosel
         title="Coming Soon"
-        data={comingSoon?.data.data}
+        data={comingSoon?.data.content}
         lottieGif={rocketLottie}
         isLoading={comingSoonLoading}
       />
@@ -65,12 +74,15 @@ export function CategoryDetailPage() {
 
       <Space h={CONTENT_SPACING} />
 
-      {/* <ItemPangination
+      <ItemPangination
         data={events?.data.content}
         isLoading={eventLoading}
-        activePage={eventActivePage}
+        activePage={
+          eventActivePage === 0 && events?.data.first ? 1 : eventActivePage
+        }
         setPage={handleEventPageChange}
-      /> */}
+        totalPages={events?.data.totalPages}
+      />
 
       <Space h={CONTENT_SPACING} />
     </>

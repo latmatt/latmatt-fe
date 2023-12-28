@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Button, Stack, PasswordInput, Text, Box, Group } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
 import { useNavigate } from 'react-router-dom';
@@ -58,13 +59,12 @@ export function LoginForm() {
             {...form.getInputProps('password')}
           />
           <Group justify="flex-end">
-            <Text
-              ta="end"
-              onClick={() => navigate('/auth/forget-password')}
+            <span
               className={classes.forgetPassword}
+              onClick={() => navigate('/auth/forget-password')}
             >
               forget password?
-            </Text>
+            </span>
           </Group>
         </Box>
 

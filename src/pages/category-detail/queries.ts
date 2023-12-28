@@ -5,6 +5,7 @@ import {
   trendingByCategoryKeys,
 } from '@config/query-keys';
 import {
+  comingSoonByCategory,
   eventsByCategory,
   genres,
   trendingByCategory,
@@ -17,14 +18,27 @@ export function useGetGenres() {
   });
 }
 
-export function useGetTrendingEventsByCategory(params: EventListParamType) {
+export function useGetTrendingEventsByCategory(
+  params: EventListParamType,
+  id: string
+) {
   return useQuery({
-    queryKey: [trendingByCategoryKeys.all, params],
-    queryFn: () => trendingByCategory(params),
+    queryKey: [trendingByCategoryKeys.all, params, id],
+    queryFn: () => trendingByCategory(params, id),
   });
 }
 
-export function useGetEventsByCategory(params: EventListParamType) {
+export function useGetComingSoonEventsByCategory(
+  params: EventListParamType,
+  id: string
+) {
+  return useQuery({
+    queryKey: [trendingByCategoryKeys.all, params, id],
+    queryFn: () => comingSoonByCategory(params, id),
+  });
+}
+
+export function useGetEventsByCategory(params: EventDetailParamType) {
   return useQuery({
     queryKey: [evnetsByCategoryKeys.all, params],
     queryFn: () => eventsByCategory(params),

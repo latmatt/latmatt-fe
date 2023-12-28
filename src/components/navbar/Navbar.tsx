@@ -26,7 +26,6 @@ interface Props {
 export function Navbar({ isTransparent = false }: Props) {
   const navigate = useNavigate();
   const { ref, height } = useElementSize();
-  console.log('height', height);
   const { isAuthedUser } = usePermission();
   const [opened, { open, close }] = useDisclosure(false);
 

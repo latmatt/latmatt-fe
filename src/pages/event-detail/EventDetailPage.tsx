@@ -1,29 +1,38 @@
 import { BackgroundImage, Box, Space } from '@mantine/core';
 import { useWindowScroll } from '@mantine/hooks';
+import { useParams } from 'react-router-dom';
 import { Footer } from '@components/common/Footer';
+import { PageLoading } from '@components/loading';
 import { Navbar } from '@components/navbar/Navbar';
 import { CONTENT_SPACING, LAYOUT_PADDING } from '@config/const';
 import { BannerImg, Description, MetaInfo } from './components';
+import { useGetEventDetails } from './queries';
 
 export function EventDetailPage() {
   const [scroll] = useWindowScroll();
+  const { id } = useParams();
+  const { data, isLoading } = useGetEventDetails({
+    id: id || '',
+  });
+
+  if (isLoading) return <PageLoading />;
 
   return (
-    <BackgroundImage src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-6.png">
+    <BackgroundImage src={data?.data.content[0].backgroundImage}>
       <Navbar isTransparent={!(scroll.y > 70)} />
 
       <Box px={LAYOUT_PADDING}>
         <Space h={CONTENT_SPACING} />
 
-        <BannerImg imgUrl="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-7.png" />
+        <BannerImg imgUrl={data?.data.content[0].image} />
 
         <Space h={CONTENT_SPACING} />
 
-        <MetaInfo />
+        <MetaInfo data={data?.data.content[0].eventNotice} />
 
         <Space h={CONTENT_SPACING} />
 
-        <Description />
+        <Description data={data?.data.content[0].information} />
 
         <Space h={CONTENT_SPACING} />
       </Box>

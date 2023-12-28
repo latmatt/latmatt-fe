@@ -23,7 +23,7 @@ export function eventDetails({
   eventTypeId,
   id,
 }: EventDetailParamType) {
-  return axios.get('events', {
+  return axios.get('/events', {
     params: { size, page, eventGenreId, eventTypeId, id },
   });
 }

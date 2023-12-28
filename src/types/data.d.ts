@@ -46,14 +46,17 @@ declare global {
   export interface EventListParamType {
     size?: number;
     page?: number;
+    id?: string;
+    eventTypeId?: string;
+    eventGenreId?: string;
   }
 
   export interface EventDetailParamType {
     size?: number;
     page?: number;
-    id: string;
-    eventTypeId: string;
-    eventGenreId: string;
+    id?: string;
+    eventTypeId?: string;
+    eventGenreId?: string;
   }
 
   export interface Category {
@@ -67,14 +70,16 @@ declare global {
     id: string;
     title: string;
     description: string;
+    information?: string;
     startDate: string;
     startTime: string;
     endDate: string;
     endTime: string;
     earlyAccessExpiredDate: string;
+    userClickCount: string;
     image: string;
-    coverImage: string;
-    userClickCount: number;
+    coverImage?: string;
+    backgroundImage?: string;
     location: {
       id: string;
       name: string;
@@ -85,6 +90,59 @@ declare global {
       mapLink: string;
       phone: string;
     };
+    promotions?: [];
+    eventNotice?: EventNotice[];
+    ticketSeats?: [
+      {
+        id: string;
+        name: string;
+        description: string;
+        price: number;
+        ticketRow: {
+          id: string;
+          name: string;
+          description: string;
+          ticketZone: {
+            id: string;
+            name: string;
+            description: string;
+          };
+        };
+        ticketZone: {
+          id: string;
+          name: string;
+          description: string;
+        };
+        eventType: {
+          id: string;
+          name: string;
+          description: string;
+          image: string;
+        };
+      }
+    ];
+    artists?: Artist[];
+    eventGenre?: Genres[];
+  }
+
+  export interface EventNotice {
+    id: string;
+    title: string;
+    description: string;
+    iconUrl: string;
+    link: null | string;
+    eventType: string;
+  }
+
+  export interface Artist {
+    id: string;
+    name: string;
+    shortName: string;
+    reknown: string;
+    profileImage: string;
+    bio: string;
+    dob: string;
+    locations: [];
   }
 
   export interface Genres {
