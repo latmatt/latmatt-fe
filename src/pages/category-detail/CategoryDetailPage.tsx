@@ -9,9 +9,10 @@ import {
   ItemPangination,
 } from '@components/common';
 import { CONTENT_SPACING } from '@config/const';
-// import { ConcertTypes } from './components';
+import { ConcertTypes } from './components';
 import {
   useGetComingSoonEventsByCategory,
+  useGetEventTypes,
   useGetEventsByCategory,
   // useGetGenres,
   useGetTrendingEventsByCategory,
@@ -20,6 +21,8 @@ import {
 export function CategoryDetailPage() {
   const [eventActivePage, setEventActivePage] = useState<number>(0);
   const { id } = useParams();
+
+  const { data: eventTypes, isLoading: eventTypeLoading } = useGetEventTypes();
 
   const { data: comingSoon, isLoading: comingSoonLoading } =
     useGetComingSoonEventsByCategory({ size: 6 }, id || '');
@@ -46,9 +49,9 @@ export function CategoryDetailPage() {
 
   return (
     <>
-      {/* <Space h={CONTENT_SPACING} /> */}
+      <Space h={CONTENT_SPACING} />
 
-      {/* <ConcertTypes data={genres?.data.data} isLoading={genresLoading} /> */}
+      <ConcertTypes data={eventTypes?.data.data} isLoading={eventTypeLoading} />
 
       <Space h={CONTENT_SPACING} />
 

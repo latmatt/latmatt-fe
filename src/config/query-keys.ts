@@ -38,12 +38,12 @@ export const categoryKeys = {
   detail: (id: string) => [...categoryKeys.details(), id] as const,
 };
 
-export const genresKeys = {
-  all: ['genres'] as const,
-  lists: () => [...genresKeys.all, 'list'] as const,
-  list: (filters: string) => [...genresKeys.lists(), { filters }] as const,
-  details: () => [...genresKeys.all, 'detail'] as const,
-  detail: (id: string) => [...genresKeys.details(), id] as const,
+export const eventTypeKeys = {
+  all: ['eventType'] as const,
+  lists: () => [...eventTypeKeys.all, 'list'] as const,
+  list: (filters: string) => [...eventTypeKeys.lists(), { filters }] as const,
+  details: () => [...eventTypeKeys.all, 'detail'] as const,
+  detail: (id: string) => [...eventTypeKeys.details(), id] as const,
 };
 
 export const trendingByCategoryKeys = {

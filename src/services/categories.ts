@@ -4,8 +4,8 @@ export function categories() {
   return axios.get('/event-types');
 }
 
-export function genres() {
-  return axios.get('/concerts/genres');
+export function eventTypes() {
+  return axios.get('/event-types');
 }
 
 export function trendingByCategory(

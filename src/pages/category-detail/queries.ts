@@ -1,20 +1,20 @@
 import { useQuery } from '@tanstack/react-query';
 import {
   evnetsByCategoryKeys,
-  genresKeys,
+  eventTypeKeys,
   trendingByCategoryKeys,
 } from '@config/query-keys';
 import {
   comingSoonByCategory,
+  eventTypes,
   eventsByCategory,
-  genres,
   trendingByCategory,
 } from '@services/categories';
 
-export function useGetGenres() {
+export function useGetEventTypes() {
   return useQuery({
-    queryKey: genresKeys.all,
-    queryFn: genres,
+    queryKey: eventTypeKeys.all,
+    queryFn: eventTypes,
   });
 }
 
