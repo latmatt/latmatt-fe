@@ -31,6 +31,7 @@ export function SignupForm() {
     mutate(
       {
         phoneNumber: value.phoneNumber,
+        type: OTP_TYPES.REGISTER,
       },
       {
         onSuccess: () => {

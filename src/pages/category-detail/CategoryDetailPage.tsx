@@ -14,7 +14,6 @@ import {
   useGetComingSoonEventsByCategory,
   useGetEventTypes,
   useGetEventsByCategory,
-  // useGetGenres,
   useGetTrendingEventsByCategory,
 } from './queries';
 

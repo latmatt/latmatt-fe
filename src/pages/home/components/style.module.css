@@ -19,3 +19,7 @@
 .borderRight {
   border-right: 1px solid var(--mantine-color-neutral-6);
 }
+
+.category {
+  cursor: pointer;
+}

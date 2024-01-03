@@ -3,6 +3,7 @@ export {};
 declare global {
   export interface OtpPayload {
     phoneNumber: string;
+    type: string;
   }
 
   export interface ValidateOtpPayload {

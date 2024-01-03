@@ -1,6 +1,7 @@
 import { AspectRatio, Grid, Image, Text } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import { CardLoading } from '@components/loading/CardListLoading';
+import classes from './style.module.css';
 import { useGetCategories } from '../queries';
 
 export function Categories() {
@@ -25,6 +26,7 @@ export function Categories() {
             ratio={1 / 1}
             w="100%"
             mx="auto"
+            className={classes.category}
           >
             <Image src={cat.image} radius="lg" />
             <Text fw="bold" fz={{ md: 'xl', sm: 'md' }} c="neutral.0">

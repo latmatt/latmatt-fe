@@ -7,7 +7,7 @@ interface Props {
 export function EventInfoCard({ data }: Props) {
   return (
     <Card>
-      <Stack gap="sm" align="center">
+      <Stack gap="sm" align="center" mih={200}>
         <Image src={data.iconUrl} w={80} />
 
         <Text ta="center" fw="bold">

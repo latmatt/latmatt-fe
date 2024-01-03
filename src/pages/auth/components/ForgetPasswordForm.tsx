@@ -28,6 +28,7 @@ export function ForgetPasswordForm() {
     mutate(
       {
         phoneNumber: values.phoneNumber,
+        type: OTP_TYPES.FORGOT_PASSWORD,
       },
       {
         onSuccess: () => {

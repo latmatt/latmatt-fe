@@ -1,7 +1,10 @@
 import axios from 'axios';
 
 export function otp(params: OtpPayload) {
-  return axios.post('/otp', {}, { params });
+  return axios.post('/otp', {
+    phoneNumber: params.phoneNumber,
+    type: params.type,
+  });
 }
 
 export function validateOtp(payload: ValidateOtpPayload) {

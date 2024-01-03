@@ -45,7 +45,7 @@ export function Navbar({ isTransparent = false }: Props) {
         className={classes.desktopNavWrapper}
       >
         <Group justify="space-between">
-          <Box h={50}>
+          <Box h={50} onClick={() => navigate('/')} className={classes.logo}>
             <Logo />
           </Box>
 
