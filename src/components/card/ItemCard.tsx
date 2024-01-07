@@ -32,12 +32,12 @@ export function ItemCard({ item }: Props) {
       <Group justify="space-between">
         <Stack gap={0}>
           <Text fz="sm">{item.startDate}</Text>
-          <Text fz="sm">{item.location.city}</Text>
+          <Text fz="sm">{item.eventDetails[0].location.city}</Text>
         </Stack>
 
         <Stack gap={0}>
           <Text fz="sm" ta="right">
-            {item.location.state}
+            {item.eventDetails[0].location.state}
           </Text>
           <Text fz="sm" ta="right">
             {item.startTime}

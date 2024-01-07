@@ -32,7 +32,7 @@ export function EventDetailPage() {
 
         <Space h={CONTENT_SPACING} />
 
-        <Description data={data?.data.content[0].information} />
+        <Description data={data?.data.content[0]} />
 
         <Space h={CONTENT_SPACING} />
       </Box>

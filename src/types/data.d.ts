@@ -71,16 +71,27 @@ declare global {
     id: string;
     title: string;
     description: string;
+    startDate: null | string;
+    startTime: null | string;
+    endDate: null | string;
+    endTime: null | string;
     information?: string;
-    startDate: string;
-    startTime: string;
-    endDate: string;
-    endTime: string;
     earlyAccessExpiredDate: string;
-    userClickCount: string;
     image: string;
-    coverImage?: string;
-    backgroundImage?: string;
+    coverImage: string;
+    userClickCount: number;
+    eventDetails: EventDetail[];
+    eventNotice?: EventNotice[];
+    artists?: Artist[];
+    eventGenre?: Genres[];
+    tags?: [];
+    socialMedia?: [];
+    highlights?: [];
+  }
+
+  export interface EventDetail {
+    id: string;
+    venueMap: string;
     location: {
       id: string;
       name: string;
@@ -91,39 +102,42 @@ declare global {
       mapLink: string;
       phone: string;
     };
-    promotions?: [];
-    eventNotice?: EventNotice[];
-    ticketSeats?: [
-      {
+    eventVenues: EventVenues[];
+  }
+
+  export interface EventVenues {
+    id: string;
+    startDate: null | string;
+    endDate: null | string;
+    ticketSeats: TicketSeats[];
+  }
+
+  export interface TicketSeats {
+    id: string;
+    name: string;
+    description: string;
+    price: number;
+    ticketRow: {
+      id: string;
+      name: string;
+      description: string;
+      ticketZone: {
         id: string;
         name: string;
         description: string;
-        price: number;
-        ticketRow: {
-          id: string;
-          name: string;
-          description: string;
-          ticketZone: {
-            id: string;
-            name: string;
-            description: string;
-          };
-        };
-        ticketZone: {
-          id: string;
-          name: string;
-          description: string;
-        };
-        eventType: {
-          id: string;
-          name: string;
-          description: string;
-          image: string;
-        };
-      }
-    ];
-    artists?: Artist[];
-    eventGenre?: Genres[];
+      };
+    };
+    ticketZone: {
+      id: string;
+      name: string;
+      description: string;
+    };
+    eventType: {
+      id: string;
+      name: string;
+      image: string;
+      description: string;
+    };
   }
 
   export interface EventNotice {
