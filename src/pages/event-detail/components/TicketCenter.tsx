@@ -1,4 +1,13 @@
-import { Button, Card, Accordion, Text, Image, Box } from '@mantine/core';
+import {
+  Button,
+  Card,
+  Accordion,
+  Text,
+  Image,
+  Box,
+  Group,
+} from '@mantine/core';
+import classes from './style.module.css';
 import { TicketCounter } from './TicketCounter';
 import { TicketSeats } from './TicketSeats';
 
@@ -24,11 +33,17 @@ export function TicketCenter({ data }: Props) {
             <Text fw="bold">Date & Time</Text>
           </Accordion.Control>
           <Accordion.Panel>
-            {data.eventVenues.map((seat) => (
-              <Box key={seat.id}>
-                <Text>{seat.startDate}</Text>
+            <Group gap="sm">
+              <Box className={classes.eventDate}>
+                <Text>18-12-2023</Text>
               </Box>
-            ))}
+              <Box className={classes.eventDate}>
+                <Text>18-12-2023</Text>
+              </Box>
+              <Box className={classes.eventDate}>
+                <Text>18-12-2023</Text>
+              </Box>
+            </Group>
           </Accordion.Panel>
         </Accordion.Item>
 
