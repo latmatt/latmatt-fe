@@ -1,4 +1,4 @@
-import { Box, Text } from '@mantine/core';
+import { Box } from '@mantine/core';
 import { useNavigate, useLocation } from 'react-router-dom';
 import classes from './style.module.css';
 
