@@ -14,16 +14,18 @@ export function NavbarItem({ isTransparent, label, to }: Props) {
 
   return (
     <Box onClick={() => navigate(to)}>
-      <Text
+      <span
         className={
+          // eslint-disable-next-line no-nested-ternary
           location.pathname === to
             ? classes.activeMenuItemDefault
+            : isTransparent
+            ? classes.transparentMenuItemDefault
             : classes.menuItemDefault
         }
-        c={isTransparent ? 'neutral.0' : 'neutral.8'}
       >
         {label}
-      </Text>
+      </span>
     </Box>
   );
 }

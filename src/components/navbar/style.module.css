@@ -22,10 +22,20 @@
 .menuItemDefault {
   cursor: pointer;
   font-weight: 600;
+
+  &:hover {
+    color: var(--mantine-color-primary-6);
+  }
 }
 .activeMenuItemDefault {
   cursor: pointer;
   font-weight: 600;
+  color: var(--mantine-color-primary-6);
+}
+.transparentMenuItemDefault {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--mantine-color-white);
 }
 
 .logo {
