@@ -8,7 +8,7 @@ export function EventInfoCard({ data }: Props) {
   return (
     <Card>
       <Stack gap="sm" align="center" mih={200}>
-        <Image src={data.iconUrl} w={80} />
+        <Image src={data.iconUrl} w={60} />
 
         <Text ta="center" fw="bold">
           {data.title}

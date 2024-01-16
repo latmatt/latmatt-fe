@@ -84,9 +84,21 @@ declare global {
     eventNotice?: EventNotice[];
     artists?: Artist[];
     eventGenre?: Genres[];
-    tags?: [];
-    socialMedia?: [];
+    tags?: EventTag[];
+    socialMedia?: EventMedia[];
     highlights?: [];
+  }
+
+  export interface EventMedia {
+    id: string;
+    link: string;
+    icon_url: string;
+  }
+
+  export interface EventTag {
+    id: string;
+    text: string;
+    description: string;
   }
 
   export interface EventDetail {

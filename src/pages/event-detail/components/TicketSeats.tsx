@@ -4,14 +4,22 @@ import classes from './style.module.css';
 
 interface Props {
   data: TicketSeats[];
+  selectedSeats: TicketSeats[];
+  onSelect: (v: TicketSeats) => void;
+  onRemove: (v: TicketSeats) => void;
 }
 
-export function TicketSeats({ data }: Props) {
+export function TicketSeats({
+  data,
+  onSelect,
+  selectedSeats,
+  onRemove,
+}: Props) {
   const { ref: parentContainer, width: parentWidth } = useElementSize();
 
   return (
-    <>
-      <Text fz="lg" fw="bold" mb="md">
+    <Box>
+      <Text fz="lg" fw="bold" mb="md" c="neutral.6">
         {data[0].price} Ks
       </Text>
       <Flex
@@ -20,19 +28,30 @@ export function TicketSeats({ data }: Props) {
         rowGap={3}
         justify="space-between"
       >
-        {data.map((seat) => (
-          <Box
-            key={seat.id}
-            className={classes.ticketSeat}
-            w={(parentWidth - 18) / 8}
-            bg="#CA81B6"
-          >
-            <Text fz="sm" ta="center">
-              {seat.name}
-            </Text>
-          </Box>
-        ))}
+        {data.map((seat) => {
+          const isSelected = !!selectedSeats.find((s) => s.name === seat.name);
+          return (
+            <Box
+              key={seat.id}
+              className={
+                isSelected ? classes.selectedTicketSeat : classes.ticketSeat
+              }
+              w={(parentWidth - 18) / 8}
+              onClick={() => {
+                if (isSelected) {
+                  onRemove(seat);
+                } else {
+                  onSelect(seat);
+                }
+              }}
+            >
+              <Text fz="sm" ta="center" c={isSelected ? 'white' : 'neutral.8'}>
+                {seat.name}
+              </Text>
+            </Box>
+          );
+        })}
       </Flex>
-    </>
+    </Box>
   );
 }

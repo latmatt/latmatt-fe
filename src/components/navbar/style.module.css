@@ -21,7 +21,6 @@
 
 .menuItemDefault {
   cursor: pointer;
-  color: yellow;
   font-weight: 600;
 }
 .activeMenuItemDefault {
