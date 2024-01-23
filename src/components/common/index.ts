@@ -9,3 +9,5 @@ export * from './LatestItem';
 export * from './BannerCarosal';
 export * from './ItemCarosel';
 export * from './ItemPagination';
+export * from './DataRow';
+export * from './DataColumn';

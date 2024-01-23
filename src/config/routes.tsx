@@ -15,9 +15,10 @@ import {
   ResetPasswordPage,
 } from '@pages/auth';
 import { CategoryDetailPage } from '@pages/category-detail';
-import { DashboardPage } from '@pages/dashboard';
 import { EventDetailPage } from '@pages/event-detail';
 import { HomePage } from '@pages/home';
+import { PaymentPage } from '@pages/payment';
+import { PurchaseInfoPage } from '@pages/purchase-info';
 import { TermsAndConditions } from '@pages/termsAndConditions';
 
 export const router = createBrowserRouter([
@@ -94,12 +95,16 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: '/d',
+    path: '/a',
     element: <AuthLayout />,
     children: [
       {
-        path: '',
-        element: <DashboardPage />,
+        path: 'payment',
+        element: <PaymentPage />,
+      },
+      {
+        path: 'purchase-info',
+        element: <PurchaseInfoPage />,
       },
     ],
   },

@@ -18,6 +18,12 @@ const requiredString = (message: string) => {
   return z.string().min(1, { message });
 };
 
+const requiredBoolean = (message: string) => {
+  return z.literal<boolean>(true, {
+    errorMap: () => ({ message }),
+  });
+};
+
 export const createShipmentDyCMOSchema = z.object({
   OPTION: required,
   TR_TYPE_ID: required,
@@ -105,4 +111,14 @@ export const resetPasswordSchema = z
 
 export const forgetPasswordSchema = z.object({
   phoneNumber: requiredString('Phone number is required!'),
+});
+
+export const paymentSchema = z.object({
+  name: requiredString('Name is required!'),
+  email: requiredString('Email is required!'),
+  phone: requiredString('Phone number is required!'),
+  paymentType: requiredString('Choose one payment type!'),
+  payment: requiredString('Choose one payment type!'),
+  terms: requiredBoolean('You need to agree terms and conditions'),
+  refundPolicy: requiredBoolean('You need to agree refund policy'),
 });

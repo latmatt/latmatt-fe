@@ -1,76 +1,79 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Button, Card, Text, Image, Box, Group } from '@mantine/core';
-import { IconChevronDown, IconChevronUp } from '@tabler/icons';
-import { LatMatCollapse } from '@components/collapse';
-import classes from './style.module.css';
-import { TicketSeats } from './TicketSeats';
+// import { IconChevronDown, IconChevronUp } from '@tabler/icons';
+// import { LatMatCollapse } from '@components/collapse';
+// import classes from './style.module.css';
+// import { TicketSeats } from './TicketSeats';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   data: EventDetail;
 }
 
-interface RadioBoxProps {
-  text: string;
-  isSelected: boolean;
-  onSelect: (v: string) => void;
-}
+// interface RadioBoxProps {
+//   text: string;
+//   isSelected: boolean;
+//   onSelect: (v: string) => void;
+// }
 
-function CollapseHeader({
-  title,
-  isExpended = false,
-}: {
-  title: string;
-  isExpended?: boolean;
-}) {
-  return (
-    <Box className={classes.collapseHeader}>
-      <Group justify="space-between">
-        <Text fw="bold">{title}</Text>
+// function CollapseHeader({
+//   title,
+//   isExpended = false,
+// }: {
+//   title: string;
+//   isExpended?: boolean;
+// }) {
+//   return (
+//     <Box className={classes.collapseHeader}>
+//       <Group justify="space-between">
+//         <Text fw="bold">{title}</Text>
 
-        {!isExpended ? <IconChevronDown /> : <IconChevronUp />}
-      </Group>
-    </Box>
-  );
-}
+//         {!isExpended ? <IconChevronDown /> : <IconChevronUp />}
+//       </Group>
+//     </Box>
+//   );
+// }
 
-function RadioBox({ text, isSelected, onSelect }: RadioBoxProps) {
-  return (
-    <Box
-      className={isSelected ? classes.selectedRadioBox : classes.radioBox}
-      px="md"
-      onClick={() => onSelect(text)}
-    >
-      <Text c={isSelected ? 'primary' : 'neutral.8'}>{text}</Text>
-    </Box>
-  );
-}
+// function RadioBox({ text, isSelected, onSelect }: RadioBoxProps) {
+//   return (
+//     <Box
+//       className={isSelected ? classes.selectedRadioBox : classes.radioBox}
+//       px="md"
+//       onClick={() => onSelect(text)}
+//     >
+//       <Text c={isSelected ? 'primary' : 'neutral.8'}>{text}</Text>
+//     </Box>
+//   );
+// }
 
 export function TicketCenter({ data }: Props) {
-  const [location, setLocation] = useState('');
-  const [date, setDate] = useState('');
-  const [seat, setSeat] = useState<TicketSeats[]>([]);
+  const navigate = useNavigate();
 
-  const getSubTotal = (): number => {
-    let result = 0;
+  // const [location, setLocation] = useState('');
+  // const [date, setDate] = useState('');
+  // const [seat, setSeat] = useState<TicketSeats[]>([]);
 
-    seat.forEach((s) => {
-      result += +s.price;
-    });
+  // const getSubTotal = (): number => {
+  //   let result = 0;
 
-    return result;
-  };
+  //   seat.forEach((s) => {
+  //     result += +s.price;
+  //   });
 
-  const handleSelectSeat = (s: TicketSeats) => {
-    setSeat((prev) => [...prev, s]);
-  };
+  //   return result;
+  // };
 
-  const handleRemoveSeat = (s: TicketSeats) => {
-    setSeat((prev) => prev.filter((p) => p.name !== s.name));
-  };
+  // const handleSelectSeat = (s: TicketSeats) => {
+  //   setSeat((prev) => [...prev, s]);
+  // };
+
+  // const handleRemoveSeat = (s: TicketSeats) => {
+  //   setSeat((prev) => prev.filter((p) => p.name !== s.name));
+  // };
 
   return (
     <Card bg="white" radius="sm">
-      <LatMatCollapse
+      {/* <LatMatCollapse
         header={<CollapseHeader title="Event Venue" />}
         body={<Image src={data.venueMap} />}
       />
@@ -136,9 +139,9 @@ export function TicketCenter({ data }: Props) {
         <Text fw="bold">Subtotal</Text>
 
         <Text>{getSubTotal()} Ks + ( Fees + Tax )</Text>
-      </Group>
+      </Group> */}
 
-      <Button fullWidth mt="md">
+      <Button onClick={() => navigate('/a/purchase-info')} fullWidth mt="md">
         Buy Now
       </Button>
     </Card>
