@@ -41,6 +41,9 @@ export function SignupForm() {
           });
           navigate('/auth/otp');
         },
+        onError: (err) => {
+          console.log('error', err);
+        },
       }
     );
   };
@@ -62,15 +65,6 @@ export function SignupForm() {
           {...form.getInputProps('phoneNumber')}
         />
 
-        <Button
-          loading={isLoading}
-          fullWidth
-          type="submit"
-          disabled={!form.isValid()}
-        >
-          Sign up
-        </Button>
-
         <Checkbox
           w="100%"
           label={
@@ -81,6 +75,15 @@ export function SignupForm() {
           }
           {...form.getInputProps('termsAndConditions', { type: 'checkbox' })}
         />
+
+        <Button
+          loading={isLoading}
+          fullWidth
+          type="submit"
+          disabled={!form.isValid()}
+        >
+          Sign up
+        </Button>
 
         <Text ta="center" fw="bold">
           Or

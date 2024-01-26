@@ -9,7 +9,7 @@ export function PurchaseInfoPage() {
       <Grid.Col span={{ base: 12, sm: 7, md: 9 }}>
         <Box className={classes.purchaseContainer}>
           <Box bg="primary" py="md">
-            <Text ta="center" c="neutral.1" fz="lg" fw="bold">
+            <Text ta="center" c="white" fz="lg" fw="bold">
               Purchasing Information
             </Text>
           </Box>

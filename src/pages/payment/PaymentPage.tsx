@@ -38,7 +38,7 @@ export function PaymentPage() {
 
   return (
     <Box>
-      <form onSubmit={form.onSubmit((values) => console.log(values))}>
+      <form onSubmit={form.onSubmit((values) => navigate('/a/purchase-info'))}>
         <Grid>
           <Grid.Col span={{ base: 12, md: 6 }}>
             <Group mb="md" justify="space-between">

@@ -20,6 +20,7 @@ export const components = {
     defaultProps: {
       size: 'lg',
       rightSection: <IconChevronDown size={20} />,
+      maxDropdownHeight: '80vh',
     },
   }),
   TextInput: TextInput.extend({

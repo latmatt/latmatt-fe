@@ -141,7 +141,7 @@ export function TicketCenter({ data }: Props) {
         <Text>{getSubTotal()} Ks + ( Fees + Tax )</Text>
       </Group> */}
 
-      <Button onClick={() => navigate('/a/purchase-info')} fullWidth mt="md">
+      <Button onClick={() => navigate('/a/payment')} fullWidth mt="md">
         Buy Now
       </Button>
     </Card>

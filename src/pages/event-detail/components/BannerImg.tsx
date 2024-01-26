@@ -5,5 +5,5 @@ interface Props {
 }
 
 export function BannerImg({ imgUrl }: Props) {
-  return <Image radius="sm" mah={500} fit="cover" src={imgUrl} />;
+  return <Image radius="sm" mah={700} fit="cover" src={imgUrl} />;
 }

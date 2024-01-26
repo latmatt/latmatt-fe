@@ -6,6 +6,7 @@ import {
   Select,
   Stack,
   TextInput,
+  rem,
 } from '@mantine/core';
 import { IconSearch } from '@tabler/icons';
 import { useParams } from 'react-router-dom';
@@ -52,7 +53,7 @@ export function Searchbar() {
   };
 
   return (
-    <BackgroundImage h={300} px={LAYOUT_PADDING} src={getBgImgUrl()}>
+    <BackgroundImage h={200} px={LAYOUT_PADDING} src={getBgImgUrl()}>
       <Stack justify="center" w="100%" h="100%">
         <Box w="100%">
           <form>

@@ -19,12 +19,13 @@ export const setupResponseInterceptor = () => {
         error?.response?.status <= 499
       ) {
         notifications.show({
+          id: 'api-error',
           color: 'red',
           message: (error?.response?.data as { message: string }).message,
         });
       }
 
-      return Promise.reject();
+      return Promise.reject(error);
     }
   );
 };

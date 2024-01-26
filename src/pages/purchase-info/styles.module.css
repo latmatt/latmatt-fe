@@ -2,4 +2,6 @@
   border-right: 1px solid var(--mantine-color-neutral-3);
   border-left: 1px solid var(--mantine-color-neutral-3);
   border-bottom: 1px solid var(--mantine-color-neutral-3);
+  overflow: hidden;
+  border-radius: var(--mantine-radius-sm);
 }
