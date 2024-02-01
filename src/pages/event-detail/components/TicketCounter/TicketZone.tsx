@@ -1,9 +1,9 @@
 import { Box, Text } from '@mantine/core';
 
-export function TicketDates() {
+export function TicketZone() {
   return (
     <Box>
-      <Text>Ticket dates</Text>
+      <Text>Ticket Zone</Text>
     </Box>
   );
 }

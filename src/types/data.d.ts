@@ -60,6 +60,22 @@ declare global {
     eventGenreId?: string;
   }
 
+  export interface EventLocationParamType {
+    eventId: string;
+  }
+
+  export interface EventDateParamType {
+    eventPlaceId: string;
+  }
+
+  export interface EventZoneParamType {
+    eventDateId: string;
+  }
+
+  export interface EventSeatParamType {
+    ticketRowId: string;
+  }
+
   export interface Category {
     id: string;
     name: string;

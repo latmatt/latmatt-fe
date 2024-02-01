@@ -27,3 +27,35 @@ export function eventDetails({
     params: { size, page, eventGenreId, eventTypeId, id },
   });
 }
+
+export function eventLocations({ eventId }: EventLocationParamType) {
+  return axios.get('/events/details/places', {
+    params: {
+      'event-id': eventId,
+    },
+  });
+}
+
+export function eventDates({ eventPlaceId }: EventDateParamType) {
+  return axios.get('/events/details/times', {
+    params: {
+      'event-place-id': eventPlaceId,
+    },
+  });
+}
+
+export function eventTicketZones({ eventDateId }: EventZoneParamType) {
+  return axios.get('/events/details/ticket-zones', {
+    params: {
+      'event-time-id': eventDateId,
+    },
+  });
+}
+
+export function eventTicketSeats({ ticketRowId }: EventSeatParamType) {
+  return axios.get('/events/details/ticket-seats', {
+    params: {
+      'ticket-row-id': ticketRowId,
+    },
+  });
+}

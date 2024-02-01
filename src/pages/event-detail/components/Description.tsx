@@ -3,7 +3,7 @@ import { Carousel } from '@mantine/carousel';
 import { Box, Card, Flex, Grid, Image, Space, Text } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import classes from './style.module.css';
-import { TicketCenter } from './TicketCenter';
+import { TicketCounter } from './TicketCounter/TicketCounter';
 
 interface Props {
   data: Event;
@@ -94,7 +94,7 @@ export function Description({ data }: Props) {
       </Grid.Col>
 
       <Grid.Col span={{ base: 12, md: 4 }}>
-        <TicketCenter data={data.eventDetails[0]} />
+        <TicketCounter />
       </Grid.Col>
     </Grid>
   );

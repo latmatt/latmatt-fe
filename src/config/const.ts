@@ -17,3 +17,7 @@ export const COOKIE_KEYS = {
 export const LAYOUT_PADDING = { base: '3%', sm: '5%', md: '7%', lg: '7%' };
 
 export const CONTENT_SPACING = { base: 'md', sm: 'lg', md: 70, lg: 70 };
+
+export const TICKET_TYPES = {
+  ZONE_ROW_SEAT: 'ZONE_ROW_SEAT',
+};

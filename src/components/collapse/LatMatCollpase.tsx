@@ -6,10 +6,17 @@ import classes from './style.module.css';
 interface Props {
   header: any;
   body: ReactNode;
+  expended?: boolean;
+  disable?: boolean;
 }
 
-export function LatMatCollapse({ header, body }: Props) {
-  const [opened, { toggle }] = useDisclosure(false);
+export function LatMatCollapse({
+  header,
+  body,
+  expended = false,
+  disable = false,
+}: Props) {
+  const [opened, { toggle }] = useDisclosure(expended);
 
   const newHeader = cloneElement(header, {
     isExpended: opened,
@@ -17,7 +24,15 @@ export function LatMatCollapse({ header, body }: Props) {
 
   return (
     <Box className={classes.collapse}>
-      <Box onClick={toggle}>{newHeader}</Box>
+      <Box
+        onClick={() => {
+          if (!disable) {
+            toggle();
+          }
+        }}
+      >
+        {newHeader}
+      </Box>
 
       <Collapse in={opened}>{body}</Collapse>
     </Box>
