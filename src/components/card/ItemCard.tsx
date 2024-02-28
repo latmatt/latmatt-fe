@@ -29,7 +29,7 @@ export function ItemCard({ item }: Props) {
         {item.title}
       </Text>
 
-      <Group justify="space-between">
+      {/* <Group justify="space-between">
         <Stack gap={0}>
           <Text fz="sm">{item.startDate}</Text>
           <Text fz="sm">{item.eventDetails[0].location.city}</Text>
@@ -43,7 +43,7 @@ export function ItemCard({ item }: Props) {
             {item.startTime}
           </Text>
         </Stack>
-      </Group>
+      </Group> */}
     </Card>
   );
 }
