@@ -9,6 +9,14 @@
   }
 }
 
+.mobileSearchbar {
+  display: none;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    display: block;
+  }
+}
+
 .faqContainer {
   cursor: pointer;
 }

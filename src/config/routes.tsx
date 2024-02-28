@@ -19,8 +19,8 @@ import { EventDetailPage } from '@pages/event-detail';
 import { HomePage } from '@pages/home';
 import { PaymentPage } from '@pages/payment';
 import { PurchaseInfoPage } from '@pages/purchase-info';
-import { TermsAndConditions } from '@pages/termsAndConditions';
 import { SupportPage } from '@pages/support';
+import { TermsAndConditions } from '@pages/termsAndConditions';
 
 export const router = createBrowserRouter([
   {

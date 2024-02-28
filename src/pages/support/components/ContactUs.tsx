@@ -1,23 +1,39 @@
-import { Grid, Button, Text, Space, Title, Flex, Stack } from '@mantine/core';
+import {
+  Button,
+  Space,
+  Title,
+  Flex,
+  Stack,
+  BackgroundImage,
+  Image,
+  Box,
+} from '@mantine/core';
+import BgImg from '@assets/images/svg/contactbg.svg';
+import Content from '@assets/images/svg/contactgraphic.svg';
 
 export function ContactUs() {
   return (
     <>
       <Space h={60} />
 
-      <Flex
-        direction={{ base: 'column', sm: 'row' }}
-        gap={{ base: 'sm', sm: 'lg' }}
-        justify={{ sm: 'space-between' }}
-      >
-        <Stack>
-          <Title order={5}>Do you need real time support?</Title>
+      <BackgroundImage src={BgImg}>
+        <Flex
+          direction={{ base: 'column-reverse', sm: 'row' }}
+          gap={{ base: 'sm', sm: 'lg' }}
+          justify={{ sm: 'space-between' }}
+          align="center"
+        >
+          <Stack pl="lg" gap="lg" pb={{ base: 'lg', md: 0 }}>
+            <Title order={5}>Do you need real time support?</Title>
 
-          <Button>Contact Us</Button>
-        </Stack>
+            <Box>
+              <Button>Contact Us</Button>
+            </Box>
+          </Stack>
 
-        <Button>Button 3</Button>
-      </Flex>
+          <Image src={Content} height={300} />
+        </Flex>
+      </BackgroundImage>
 
       <Space h={60} />
     </>
