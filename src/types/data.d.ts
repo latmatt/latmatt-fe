@@ -1,6 +1,10 @@
 export {};
 
 declare global {
+  export interface DingerPrebuilt {
+    payload: string;
+    hashValue: string;
+  }
   export interface OtpPayload {
     phoneNumber: string;
     type: string;
@@ -83,19 +87,19 @@ declare global {
     description: string;
   }
 
+  export type EventStatus = 'ZONE_ROW_SEAT' | 'ZONE' | 'ZONE_SEAT';
+
   export interface Event {
     id: string;
     title: string;
     description: string;
-    startDate: null | string;
-    startTime: null | string;
-    endDate: null | string;
-    endTime: null | string;
-    information?: string;
+    information: string;
     earlyAccessExpiredDate: string;
+    userClickCount: number;
     image: string;
     coverImage: string;
-    userClickCount: number;
+    backgroundImage: string;
+    status: null | EventStatus;
     eventDetails: EventDetail[];
     eventNotice?: EventNotice[];
     artists?: Artist[];
@@ -138,6 +142,46 @@ declare global {
     startDate: null | string;
     endDate: null | string;
     ticketSeats: TicketSeats[];
+  }
+
+  export interface EventLocation {
+    id: string;
+    venueMap: string;
+    location: {
+      id: string;
+      name: string;
+      street: string;
+      city: string;
+      state: string;
+      zipCode: string;
+      mapLink: string;
+      phone: string;
+    };
+  }
+
+  export interface EventRows {
+    id: string;
+    name: string;
+    description: string;
+    price: number;
+    serviceCharges: number;
+    serviceChargesInPercent: number;
+    tax: number;
+    taxInPercent: number;
+  }
+
+  export interface EventZones {
+    id: string;
+    name: string;
+    description: string;
+    ticketRows: EventRows[];
+  }
+
+  export interface EventSeat {
+    id: string;
+    name: string;
+    description: string;
+    state: 'AVAILABLE' | 'PENDING' | 'NA';
   }
 
   export interface TicketSeats {

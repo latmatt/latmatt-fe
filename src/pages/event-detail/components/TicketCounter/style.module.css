@@ -1,7 +1,6 @@
 .filterBox {
   padding: 5px 10px;
   border-radius: 3px;
-  flex: 1;
   text-align: center;
   cursor: pointer;
 }
@@ -14,6 +13,13 @@
   border: 1px solid var(--mantine-color-neutral-6);
 }
 
+.zoneItem {
+  width: 100%;
+  padding: var(--mantine-spacing-xs);
+  background: var(--mantine-color-gray-1);
+  border-radius: var(--mantine-radius-default);
+}
+
 .rowContainer {
   width: 100%;
   border-radius: 3px;
@@ -21,6 +27,34 @@
   text-align: center;
   cursor: pointer;
   border: 1px solid var(--mantine-color-neutral-6);
+  color: var(--mantine-color-neutral-6);
+  transition: all ease 0.3s;
+
+  &:hover {
+    border: 1px solid var(--mantine-color-primary-6);
+    color: var(--mantine-color-primary-6);
+  }
+}
+
+.activeRowContainer {
+  width: 100%;
+  border-radius: 3px;
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid var(--mantine-color-primary-6);
+  color: var(--mantine-color-primary-6);
+  transition: all ease 0.3s;
+}
+
+.disableRowContainer {
+  width: 100%;
+  border-radius: 3px;
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid var(--mantine-color-gray-4);
+  color: var(--mantine-color-gray-4);
   transition: all ease 0.3s;
 }
 
@@ -37,4 +71,19 @@
   &:hover {
     background: #c76faf;
   }
+}
+
+.selectedSeatContainer {
+  width: 100%;
+  border-radius: 3px;
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+  background: var(--mantine-color-primary-6);
+  color: 'white';
+  transition: all ease 0.3s;
+
+  /* &:hover {
+    background: #c76faf;
+  } */
 }

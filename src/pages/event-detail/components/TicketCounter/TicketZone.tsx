@@ -1,68 +1,55 @@
-import { Box, Grid, Space, Text } from '@mantine/core';
-import classes from './style.module.css';
+import { useState } from 'react';
+import { Group, ActionIcon, Text } from '@mantine/core';
+import { IconPlus, IconMinus } from '@tabler/icons';
 
-function Row() {
-  return (
-    <Grid.Col span={{ base: 12 / 8, sm: 12 / 8, md: 12 / 8 }}>
-      <Box className={classes.rowContainer}>
-        <Text fz="sm">1</Text>
-      </Box>
-    </Grid.Col>
-  );
+interface Props {
+  zone: EventZones;
+  price: number;
 }
 
-function Seat() {
+export function TicketZone({ price, zone }: Props) {
+  const [count, setCount] = useState<number>(0);
+
+  const handleIncrease = () => {
+    setCount((prev) => prev + 1);
+  };
+
+  const handleDecrease = () => {
+    if (count > 0) setCount((prev) => prev - 1);
+  };
+
   return (
-    <Grid.Col span={{ base: 12 / 8, sm: 12 / 8, md: 12 / 8 }}>
-      <Box className={classes.seatContainer}>
-        <Text fz="sm">1</Text>
-      </Box>
-    </Grid.Col>
-  );
-}
+    <>
+      <Text fw="bold" fz="lg">
+        {zone.name}
+      </Text>
+      <Group justify="space-between">
+        <Text>{price}</Text>
 
-export function TicketZone() {
-  return (
-    <Box>
-      <Box p="sm" bg="neutral.0">
-        <Text fw="bold">Rows</Text>
+        <Group>
+          <ActionIcon
+            onClick={handleDecrease}
+            variant="default"
+            color="gray"
+            aria-label="Settings"
+          >
+            <IconMinus style={{ width: '70%', height: '70%' }} stroke={1.5} />
+          </ActionIcon>
 
-        <Grid gutter={2}>
-          <Row />
+          <ActionIcon variant="default" color="gray" aria-label="Settings">
+            <Text>{count}</Text>
+          </ActionIcon>
 
-          <Row />
-
-          <Row />
-
-          <Row />
-
-          <Row />
-
-          <Row />
-        </Grid>
-      </Box>
-
-      <Space h="sm" />
-
-      <Box p="sm" bg="neutral.0">
-        <Text fw="bold">Seats</Text>
-
-        <Grid gutter={2}>
-          <Seat />
-
-          <Seat />
-
-          <Seat />
-
-          <Seat />
-
-          <Seat />
-
-          <Seat />
-        </Grid>
-      </Box>
-
-      <Space h="sm" />
-    </Box>
+          <ActionIcon
+            onClick={handleIncrease}
+            variant="default"
+            color="gray"
+            aria-label="Settings"
+          >
+            <IconPlus style={{ width: '70%', height: '70%' }} stroke={1.5} />
+          </ActionIcon>
+        </Group>
+      </Group>
+    </>
   );
 }

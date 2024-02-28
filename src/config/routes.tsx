@@ -20,6 +20,7 @@ import { HomePage } from '@pages/home';
 import { PaymentPage } from '@pages/payment';
 import { PurchaseInfoPage } from '@pages/purchase-info';
 import { TermsAndConditions } from '@pages/termsAndConditions';
+import { SupportPage } from '@pages/support';
 
 export const router = createBrowserRouter([
   {
@@ -70,7 +71,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'support',
-        element: <HomePage />,
+        element: <SupportPage />,
       },
     ],
   },

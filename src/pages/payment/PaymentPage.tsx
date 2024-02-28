@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import {
   Box,
   Card,
@@ -15,12 +16,26 @@ import {
 } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
 import { IconArrowNarrowLeft } from '@tabler/icons';
+import CryptoJS from 'crypto-js';
+import JSEncrypt from 'jsencrypt';
+import forge from 'node-forge';
 import { useNavigate } from 'react-router-dom';
 import { PhoneInput } from '@components/input';
+// import { encryptDataWithRSA } from '@utils/helper';
 import { paymentSchema } from '@utils/schema';
+
+function encryptDataWithRSA(publicKey: any, plaintext: any) {
+  const publicKeyForge = forge.pki.publicKeyFromPem(publicKey);
+  const encryptedBytes = publicKeyForge.encrypt(plaintext);
+  const encryptedHex = forge.util.bytesToHex(encryptedBytes);
+  return encryptedHex;
+}
 
 export function PaymentPage() {
   const navigate = useNavigate();
+  const id = useId();
+
+  // const { data, isLoading } = useGetDingerPrebuilt();
 
   const form = useForm({
     initialValues: {
@@ -33,12 +48,65 @@ export function PaymentPage() {
       terms: false,
       refundPolicy: false,
     },
-    validate: zodResolver(paymentSchema),
+    // validate: zodResolver(paymentSchema),
   });
+
+  const handleMakePayment = async () => {
+    const rsaPublicKey = `-----BEGIN PUBLIC KEY-----\n${
+      import.meta.env.VITE_PAYMENT_PUBLIC_KEY
+    }\n-----END PUBLIC KEY-----`;
+
+    const items = JSON.stringify([
+      {
+        name: 'Dinger',
+        amount: 1100,
+        quantity: 2,
+      },
+    ]);
+
+    const data = {
+      clientId: '2dc83ae-3799-323c-8ba6-45a74babb39b',
+      publicKey: import.meta.env.VITE_PAYMENT_PUBLIC_KEY,
+      items,
+      customerName: 'Sai Min',
+      totalAmount: 2200,
+      merchantOrderId: id,
+      merchantKey: '4c5dan8.v1dovbn4ocsoaDl3fDgGcEVtSBk',
+      projectName: 'LATTMAT',
+      merchantName: 'LATTMAT',
+    };
+
+    const encryptedData = encryptDataWithRSA(
+      rsaPublicKey,
+      // JSON.stringify(data)
+      '{id: "hello"}'
+    );
+    const base64EncryptedData = btoa(
+      unescape(encodeURIComponent(encryptedData))
+    );
+    const hash = CryptoJS.HmacSHA256(
+      base64EncryptedData,
+      'd29d3881dc1d43f662e46ea68c8af701'
+    ).toString();
+
+    console.log('encryptedData', base64EncryptedData);
+    console.log('base64EncryptedData', base64EncryptedData);
+    console.log('hash', hash);
+    console.log(
+      `https://prebuilt.dinger.asia/?payload=${base64EncryptedData}&hashValue=${hash}`
+    );
+
+    // window.location.href = `https://prebuilt.dinger.asia/?payload=${base64EncryptedData}&hashValue=${hash}`;
+
+    // await prebuilt({
+    //   payload: 'hhaha',
+    //   hashValue: 'hehe',
+    // });
+  };
 
   return (
     <Box>
-      <form onSubmit={form.onSubmit((values) => navigate('/a/purchase-info'))}>
+      <form>
         <Grid>
           <Grid.Col span={{ base: 12, md: 6 }}>
             <Group mb="md" justify="space-between">
@@ -77,8 +145,7 @@ export function PaymentPage() {
                 />
 
                 <Select
-                  label="Your favorite library"
-                  placeholder="Pick value"
+                  label="Delivery Option"
                   data={['React', 'Angular', 'Vue', 'Svelte']}
                   withAsterisk
                   {...form.getInputProps('paymentType')}
@@ -191,7 +258,7 @@ export function PaymentPage() {
               />
             </Stack>
 
-            <Button type="submit" fullWidth>
+            <Button onClick={handleMakePayment} fullWidth>
               Place Order
             </Button>
           </Grid.Col>

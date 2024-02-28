@@ -63,3 +63,12 @@ export const evnetsByCategoryKeys = {
   details: () => [...evnetsByCategoryKeys.all, 'detail'] as const,
   detail: (id: string) => [...evnetsByCategoryKeys.details(), id] as const,
 };
+
+export const dingerPrebuiltKeys = {
+  all: ['dinger-prebuilt'] as const,
+  lists: () => [...dingerPrebuiltKeys.all, 'list'] as const,
+  list: (filters: string) =>
+    [...dingerPrebuiltKeys.lists(), { filters }] as const,
+  details: () => [...dingerPrebuiltKeys.all, 'detail'] as const,
+  detail: (id: string) => [...dingerPrebuiltKeys.details(), id] as const,
+};

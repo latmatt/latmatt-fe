@@ -20,4 +20,12 @@ export const CONTENT_SPACING = { base: 'md', sm: 'lg', md: 70, lg: 70 };
 
 export const TICKET_TYPES = {
   ZONE_ROW_SEAT: 'ZONE_ROW_SEAT',
+  ZONE: 'ZONE',
+  ZONE_SEAT: 'ZONE_SEAT',
+};
+
+export const SEAT_STATUS = {
+  AVAILABLE: 'AVAILABLE',
+  PENDING: 'PENDING',
+  NA: 'NA',
 };
