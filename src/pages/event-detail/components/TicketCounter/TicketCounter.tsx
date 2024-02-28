@@ -76,15 +76,10 @@ function TicketZoneViewer({ zones, ticketStatus }: TicketZoneViewerProps) {
 
   if (ticketStatus === 'ZONE_SEAT') {
     return (
-      <>
-        {zones.map((z: EventZones) => (
-          <LatMatCollapse
-            key={z.id}
-            header={<CollapseHeader title={z.name} />}
-            body={<TicketZoneWithSeats rows={z.ticketRows} />}
-          />
-        ))}
-      </>
+      <LatMatCollapse
+        header={<CollapseHeader title={zones[0].name} />}
+        body={<TicketZoneWithSeats rows={zones[0].ticketRows} />}
+      />
     );
   }
 

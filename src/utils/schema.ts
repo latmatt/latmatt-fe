@@ -117,6 +117,7 @@ export const paymentSchema = z.object({
   name: requiredString('Name is required!'),
   email: requiredString('Email is required!'),
   phone: requiredString('Phone number is required!'),
+  address: requiredString('Address is required!'),
   paymentType: requiredString('Choose one payment type!'),
   payment: requiredString('Choose one payment type!'),
   terms: requiredBoolean('You need to agree terms and conditions'),

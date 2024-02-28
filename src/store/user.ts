@@ -4,8 +4,9 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 interface UserState {
   latestEvent: Event | null;
   selectedEvent: Event | null;
-  selectedSeats: EventSeat[];
-  updateSelectedSeats: (seats: EventSeat[]) => void;
+  // selectedSeats: EventSeat[];
+  selectedSeats: any;
+  updateSelectedSeats: (seats: any) => void;
   updateSelectedEvent: (event: Event) => void;
   updateLatestEvent: (event: Event) => void;
 }

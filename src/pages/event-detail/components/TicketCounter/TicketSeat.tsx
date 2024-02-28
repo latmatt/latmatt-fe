@@ -13,7 +13,7 @@ export function TicketSeat({ seat }: SeatProps) {
   const [isSelected, setIsSelected] = useState<boolean>(false);
 
   useMemo(() => {
-    const selectedSeat = selectedSeats.find((s) => s.id === seat.id);
+    const selectedSeat = selectedSeats.find((s: any) => s.id === seat.id);
 
     if (selectedSeat) {
       setIsSelected(true);
@@ -24,7 +24,7 @@ export function TicketSeat({ seat }: SeatProps) {
 
   const handleClick = () => {
     if (isSelected) {
-      const filteredSeats = selectedSeats.filter((s) => s.id !== seat.id);
+      const filteredSeats = selectedSeats.filter((s: any) => s.id !== seat.id);
       updateSelectedSeats(filteredSeats);
     } else {
       updateSelectedSeats([...selectedSeats, seat]);
