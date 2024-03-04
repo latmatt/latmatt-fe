@@ -1,6 +1,9 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Group, ActionIcon, Text } from '@mantine/core';
 import { IconPlus, IconMinus } from '@tabler/icons';
+import { SEAT_STATUS } from '@config/const';
+import { useGetTicketSeats } from '@pages/event-detail/queries';
+import useUserStore from '../../../../store/user';
 
 interface Props {
   zone: EventZones;
@@ -8,10 +11,26 @@ interface Props {
 }
 
 export function TicketZone({ price, zone }: Props) {
+  const { cart, updateConcertCart } = useUserStore();
+  const [availableSeats, setAvailableSeats] = useState<EventSeat[]>([]);
+
+  const { data: seats, isLoading: seatLoading } = useGetTicketSeats({
+    ticketRowId: zone.ticketRows[0].id,
+  });
+
+  useMemo(() => {
+    setAvailableSeats(
+      seats?.filter((s: EventSeat) => s.state === SEAT_STATUS.AVAILABLE)
+    );
+  }, [seats]);
+
   const [count, setCount] = useState<number>(0);
 
   const handleIncrease = () => {
-    setCount((prev) => prev + 1);
+    updateConcertCart(availableSeats[0]);
+    setAvailableSeats(
+      availableSeats.filter((as) => as.id !== availableSeats[0].id)
+    );
   };
 
   const handleDecrease = () => {
@@ -37,7 +56,7 @@ export function TicketZone({ price, zone }: Props) {
           </ActionIcon>
 
           <ActionIcon variant="default" color="gray" aria-label="Settings">
-            <Text>{count}</Text>
+            <Text>{cart.concert.length}</Text>
           </ActionIcon>
 
           <ActionIcon

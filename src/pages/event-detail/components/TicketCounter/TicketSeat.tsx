@@ -8,26 +8,26 @@ interface SeatProps {
 }
 
 export function TicketSeat({ seat }: SeatProps) {
-  const { selectedSeats, updateSelectedSeats } = useUserStore();
+  const { cart, updateConcertCart } = useUserStore();
 
   const [isSelected, setIsSelected] = useState<boolean>(false);
 
   useMemo(() => {
-    const selectedSeat = selectedSeats.find((s: any) => s.id === seat.id);
+    const selectedSeat = cart.concert.find((s: any) => s.id === seat.id);
 
     if (selectedSeat) {
       setIsSelected(true);
     } else {
       setIsSelected(false);
     }
-  }, [seat, selectedSeats]);
+  }, [cart.concert, seat.id]);
 
   const handleClick = () => {
     if (isSelected) {
-      const filteredSeats = selectedSeats.filter((s: any) => s.id !== seat.id);
-      updateSelectedSeats(filteredSeats);
+      const filteredSeats = cart.concert.filter((s: any) => s.id !== seat.id);
+      updateConcertCart(filteredSeats);
     } else {
-      updateSelectedSeats([...selectedSeats, seat]);
+      updateConcertCart([...cart.concert, seat]);
     }
   };
 

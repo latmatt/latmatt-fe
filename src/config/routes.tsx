@@ -21,6 +21,7 @@ import { PaymentPage } from '@pages/payment';
 import { PurchaseInfoPage } from '@pages/purchase-info';
 import { SupportPage } from '@pages/support';
 import { TermsAndConditions } from '@pages/termsAndConditions';
+import { YourTicketPage } from '@pages/your-ticket/YourTicketPage';
 
 export const router = createBrowserRouter([
   {
@@ -72,6 +73,10 @@ export const router = createBrowserRouter([
       {
         path: 'support',
         element: <SupportPage />,
+      },
+      {
+        path: 'your-ticket',
+        element: <YourTicketPage />,
       },
     ],
   },

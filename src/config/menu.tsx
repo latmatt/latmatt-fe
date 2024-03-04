@@ -14,7 +14,7 @@ export const MENU_ITEMS = [
     icon: support,
   },
   {
-    to: '/ticket',
+    to: '/your-ticket',
     label: 'Your Ticket',
     icon: ticket,
   },

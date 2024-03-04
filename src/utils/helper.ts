@@ -10,9 +10,9 @@ export function formatCurrency(amount: number, currency?: boolean) {
   return `${new Intl.NumberFormat().format(amount)} ${currency ? 'MMK' : ''}`;
 }
 
-export function encryptDataWithRSA(data: any, publicKey: any) {
+export function encryptDataWithRSA(data: any, encryptKey: any) {
   const encrypt = new JSEncrypt({ default_key_size: '5048' });
-  encrypt.setPublicKey(publicKey);
+  encrypt.setPublicKey(encryptKey);
   const maxChunkLength = 100;
   let output = '';
   let inOffset = 0;
