@@ -5,12 +5,13 @@ import rocketLottie from '@assets/images/lottie/rocket.json';
 import { BannerCarosal, ItemCarosel, LatestItem } from '@components/common';
 import { CONTENT_SPACING } from '@config/const';
 import { usePermission } from '@hooks/usePermission';
-import { Categories, Features, SearchBar } from './components';
+import { Categories, Features } from './components';
 import {
   useGetComingSoonEvents,
   useGetEarlyAccessEvents,
   useGetTrendingEvents,
 } from './queries';
+// import { SearchBar } from '../../layouts/components';
 
 export function HomePage() {
   const { isAuthedUser } = usePermission();
@@ -29,7 +30,7 @@ export function HomePage() {
     <>
       <Space h={CONTENT_SPACING} />
 
-      <SearchBar />
+      {/* <SearchBar /> */}
 
       <Space h="md" />
 

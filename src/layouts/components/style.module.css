@@ -1,0 +1,21 @@
+.searchbar {
+  padding: 2px;
+  border-radius: var(--mantine-radius-sm);
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    display: none;
+  }
+}
+
+.mobileSearchbar {
+  display: none;
+  margin-top: 20px;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    display: block;
+  }
+}
+
+.borderRight {
+  border-right: 1px solid var(--mantine-color-gray-4);
+}

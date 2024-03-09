@@ -9,6 +9,7 @@ import { LAYOUT_PADDING } from '@config/const';
 import { useAppSetup } from '@hooks/useAppSetup';
 import { useQueries } from '@hooks/useQueries';
 import { getAuth, setAuth } from '@utils/auth';
+import { SearchBar } from './components';
 
 export function RootLayout() {
   const { queries } = useQueries();
@@ -28,6 +29,8 @@ export function RootLayout() {
   return (
     <Box>
       <Navbar />
+
+      <SearchBar />
 
       <Box px={LAYOUT_PADDING}>
         <Outlet />

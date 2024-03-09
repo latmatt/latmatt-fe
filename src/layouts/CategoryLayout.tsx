@@ -5,7 +5,7 @@ import { PageLoading } from '@components/loading';
 import { Navbar } from '@components/navbar/Navbar';
 import { LAYOUT_PADDING } from '@config/const';
 import { useAppSetup } from '@hooks/useAppSetup';
-import { Searchbar } from '@pages/category-detail/components';
+import { SearchBar } from './components';
 
 export function CategoryLayout() {
   const init = useAppSetup();
@@ -15,7 +15,7 @@ export function CategoryLayout() {
     <Box>
       <Navbar />
 
-      <Searchbar />
+      <SearchBar />
 
       <Box px={LAYOUT_PADDING}>
         <Outlet />
