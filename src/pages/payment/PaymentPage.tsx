@@ -96,15 +96,12 @@ export function PaymentPage() {
     ]);
 
     const data = {
-      // from Dinger
       clientId: import.meta.env.VITE_PAYMANT_CLIENT_ID,
-      // from Dinger
       publicKey: import.meta.env.VITE_PAYMENT_PUBLIC_KEY,
       items,
       customerName: 'John Doe',
       totalAmount: 1000,
       merchantOrderId: id,
-      // from Dinger
       merchantKey: import.meta.env.VITE_PAYMENT_MERCHANT_API_KEY,
       projectName: 'LATTMAT',
       merchantName: 'LATTMAT',
@@ -114,7 +111,6 @@ export function PaymentPage() {
      * Encrypt data with RSA Algorithm
      */
     const encryptedData = encryptDataWithRSA(
-      // from Dinger
       JSON.stringify(data),
       import.meta.env.VITE_PAYMENT_ENCRYPTION_KEY
     );
@@ -129,18 +125,17 @@ export function PaymentPage() {
      */
     const hash = CryptoJS.HmacSHA256(
       base64EncryptedData,
-      // from Dinger
       import.meta.env.VITE_PAYMENT_SECRET_KEY
     ).toString();
 
-    console.log('encryptedData', encryptedData);
-    console.log('base64EncryptedData', base64EncryptedData);
-    console.log('hash', hash);
-    console.log(
-      `https://prebuilt.dinger.asia/?payload=${base64EncryptedData}&hashValue=${hash}`
-    );
+    // console.log('encryptedData', encryptedData);
+    // console.log('base64EncryptedData', base64EncryptedData);
+    // console.log('hash', hash);
+    // console.log(
+    //   `https://prebuilt.dinger.asia/?payload=${base64EncryptedData}&hashValue=${hash}`
+    // );
 
-    window.location.href = `https://prebuilt.dinger.asia/?payload=${base64EncryptedData}&hashValue=${hash}`;
+    // window.location.href = `https://prebuilt.dinger.asia/?payload=${base64EncryptedData}&hashValue=${hash}`;
   };
 
   return (

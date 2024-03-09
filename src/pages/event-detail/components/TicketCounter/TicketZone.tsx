@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Group, ActionIcon, Text } from '@mantine/core';
 import { IconPlus, IconMinus } from '@tabler/icons';
 import { SEAT_STATUS } from '@config/const';
@@ -14,27 +14,29 @@ export function TicketZone({ price, zone }: Props) {
   const { cart, updateConcertCart } = useUserStore();
   const [availableSeats, setAvailableSeats] = useState<EventSeat[]>([]);
 
-  const { data: seats, isLoading: seatLoading } = useGetTicketSeats({
+  const { data: seats } = useGetTicketSeats({
     ticketRowId: zone.ticketRows[0].id,
   });
 
-  useMemo(() => {
+  useEffect(() => {
     setAvailableSeats(
       seats?.filter((s: EventSeat) => s.state === SEAT_STATUS.AVAILABLE)
     );
   }, [seats]);
 
-  const [count, setCount] = useState<number>(0);
-
   const handleIncrease = () => {
-    updateConcertCart(availableSeats[0]);
+    updateConcertCart([...cart.concert, availableSeats[0]]);
     setAvailableSeats(
       availableSeats.filter((as) => as.id !== availableSeats[0].id)
     );
   };
 
   const handleDecrease = () => {
-    if (count > 0) setCount((prev) => prev - 1);
+    const theLastSeat = cart.concert[cart.concert.length - 1];
+    updateConcertCart(
+      cart.concert.filter((cartConcert) => cartConcert.id !== theLastSeat.id)
+    );
+    setAvailableSeats(availableSeats.filter((as) => as.id !== theLastSeat.id));
   };
 
   return (
