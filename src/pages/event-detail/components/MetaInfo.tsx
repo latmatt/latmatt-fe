@@ -8,7 +8,7 @@ interface Props {
 export function MetaInfo({ data }: Props) {
   return (
     <Grid>
-      {data.map((d) => (
+      {data?.map((d) => (
         <Grid.Col key={d.id} span={{ base: 12, sm: 6, md: 3 }}>
           <EventInfoCard data={d} />
         </Grid.Col>

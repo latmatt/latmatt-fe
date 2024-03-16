@@ -1,10 +1,23 @@
+import { useEffect, useRef } from 'react';
 import { Stack, Grid, TextInput, Select, Button } from '@mantine/core';
 import { IconSearch } from '@tabler/icons';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { LAYOUT_PADDING } from '@config/const';
 import { CATEGORIES } from '@config/mocks';
 import classes from './style.module.css';
 
 export function SearchBar() {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  const inputRef = useRef<any>();
+
+  useEffect(() => {
+    if (pathname === '/search-results' && inputRef) {
+      inputRef.current.focus();
+    }
+  });
+
   return (
     <Stack
       justify="center"
@@ -21,6 +34,8 @@ export function SearchBar() {
         <Grid gutter={0} className={classes.searchbar} bg="white">
           <Grid.Col span={{ base: 4 }}>
             <TextInput
+              ref={inputRef}
+              onFocus={() => navigate('/search-results')}
               variant="unstyled"
               leftSection={<IconSearch />}
               placeholder="Search for artists, events and funs"

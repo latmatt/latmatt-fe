@@ -6,6 +6,7 @@ import {
   DefaultLayout,
   EventLayout,
   RootLayout,
+  RootLayoutWithSearchBar,
 } from '@layouts';
 import {
   CreatePasswordPage,
@@ -17,6 +18,7 @@ import {
 import { CategoryDetailPage } from '@pages/category-detail';
 import { EventDetailPage } from '@pages/event-detail';
 import { HomePage } from '@pages/home';
+import { SearchResultPage } from '@pages/index';
 import { PaymentPage } from '@pages/payment';
 import { PurchaseInfoPage } from '@pages/purchase-info';
 import { SupportPage } from '@pages/support';
@@ -60,7 +62,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/',
-    element: <RootLayout />,
+    element: <RootLayoutWithSearchBar />,
     children: [
       {
         index: true,
@@ -70,6 +72,16 @@ export const router = createBrowserRouter([
         path: 'ticket',
         element: <HomePage />,
       },
+      {
+        path: 'search-results',
+        element: <SearchResultPage />,
+      },
+    ],
+  },
+  {
+    path: '/',
+    element: <RootLayout />,
+    children: [
       {
         path: 'support',
         element: <SupportPage />,
