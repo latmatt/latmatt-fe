@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Space } from '@mantine/core';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import fireLottie from '@assets/images/lottie/fire.json';
 import rocketLottie from '@assets/images/lottie/rocket.json';
 import {
@@ -19,7 +19,10 @@ import {
 
 export function CategoryDetailPage() {
   const [eventActivePage, setEventActivePage] = useState<number>(0);
-  const { id } = useParams();
+  // const { id } = useParams();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const id = searchParams.get('id');
 
   const { data: eventTypes, isLoading: eventTypeLoading } = useGetEventTypes();
 
@@ -39,7 +42,7 @@ export function CategoryDetailPage() {
   const { data: events, isLoading: eventLoading } = useGetEventsByCategory({
     size: 4,
     page: eventActivePage,
-    eventTypeId: id,
+    eventTypeId: id || '',
   });
 
   const handleEventPageChange = (page: number) => {

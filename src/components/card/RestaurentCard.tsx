@@ -1,23 +1,23 @@
-import { Card, Text, Image, Box } from '@mantine/core';
+import { Card, Image, Text, Box } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import classes from './style.module.css';
 
-interface Props {
-  item: Event;
-}
-
-export function ItemCard({ item }: Props) {
+export function RestaurentCard() {
   const navigate = useNavigate();
 
   return (
     <Card
-      onClick={() => navigate(`/events/${item.id}`)}
+      onClick={() => navigate('/')}
       className={classes.card}
       withBorder
       radius="lg"
     >
       <Card.Section className={classes.imageSection}>
-        <Image src={item.image} h={200} alt="No way!" />
+        <Image
+          src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-7.png"
+          h={200}
+          alt="No way!"
+        />
         <Box className={classes.imageSlideup}>
           <Text c="neutral.0" fw="bold">
             Check Details
@@ -26,8 +26,10 @@ export function ItemCard({ item }: Props) {
       </Card.Section>
 
       <Text fw="bold" fz="lg" my="md">
-        {item.title}
+        Title
       </Text>
+
+      <Text>Detail</Text>
     </Card>
   );
 }

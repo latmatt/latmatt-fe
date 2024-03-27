@@ -6,7 +6,7 @@ interface Props {
 
 export function EventInfoCard({ data }: Props) {
   return (
-    <Card>
+    <Card withBorder>
       <Stack gap="sm" align="center" mih={200}>
         <Image src={data.iconUrl} w={60} />
 

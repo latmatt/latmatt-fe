@@ -1,9 +1,15 @@
 export {};
 
 declare global {
-  export interface DingerPrebuilt {
-    payload: string;
-    hashValue: string;
+  export interface DingerPrebuiltPayload {
+    customerName: string;
+    totalAmount: number;
+    merchantOrderId: string;
+    items: {
+      name: string;
+      amount: number;
+      quantity: number;
+    }[];
   }
   export interface OtpPayload {
     phoneNumber: string;
@@ -85,6 +91,7 @@ declare global {
     name: string;
     image: string;
     description: string;
+    type: string;
   }
 
   export type EventStatus = 'ZONE_ROW_SEAT' | 'ZONE' | 'ZONE_SEAT';

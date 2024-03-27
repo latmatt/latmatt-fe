@@ -1,5 +1,5 @@
-import { dingerApi } from '@utils/axiosInstances';
+import axios from 'axios';
 
-export function prebuilt(params: DingerPrebuilt) {
-  return dingerApi.get('/', { params });
+export function dingerPrebuilt(data: DingerPrebuiltPayload) {
+  return axios.post('/dinger/payload', data);
 }

@@ -15,29 +15,31 @@ export function EventDetailPage() {
     id: id || '',
   });
 
-  if (isLoading) return <PageLoading />;
+  if (!data && isLoading) return <PageLoading />;
 
   return (
-    <BackgroundImage src={data?.data.content[0].backgroundImage}>
-      <Navbar isTransparent={!(scroll.y > 70)} />
+    <Box>
+      <BackgroundImage src={data?.backgroundImage}>
+        <Navbar isTransparent={!(scroll.y > 70)} />
 
-      <Box px={LAYOUT_PADDING}>
-        <Space h={CONTENT_SPACING} />
+        <Box px={LAYOUT_PADDING}>
+          <Space h={CONTENT_SPACING} />
 
-        <BannerImg imgUrl={data?.data.content[0].image} />
+          <BannerImg imgUrl={data?.image} />
 
-        <Space h={CONTENT_SPACING} />
+          <Space h={CONTENT_SPACING} />
 
-        <MetaInfo data={data?.data.content[0].eventNotice} />
+          <MetaInfo data={data?.eventNotice} />
 
-        <Space h={CONTENT_SPACING} />
+          <Space h={CONTENT_SPACING} />
 
-        <Description data={data?.data.content[0]} />
+          <Description data={data} />
 
-        <Space h={CONTENT_SPACING} />
-      </Box>
+          <Space h={CONTENT_SPACING} />
+        </Box>
 
-      <Footer isTransparent />
-    </BackgroundImage>
+        <Footer isTransparent />
+      </BackgroundImage>
+    </Box>
   );
 }

@@ -10,8 +10,10 @@ import {
 
 export function useGetEventDetails(params: EventDetailParamType) {
   return useQuery({
-    queryKey: [eventsKeys.list, params],
+    // eslint-disable-next-line @tanstack/query/exhaustive-deps
+    queryKey: eventsKeys.detail(params.id || ''),
     queryFn: () => eventDetails(params),
+    select: (data) => data.data.content[0],
   });
 }
 

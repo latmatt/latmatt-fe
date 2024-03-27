@@ -13,12 +13,14 @@ export function Description({ data }: Props) {
   return (
     <Grid>
       <Grid.Col span={{ base: 12, md: 8 }}>
-        <Card radius="sm" bg="white" p="md">
-          <div
-            dangerouslySetInnerHTML={{ __html: data.information as string }}
-          />
+        <Card radius="sm" bg="white" p="md" withBorder>
+          {data?.information && (
+            <div
+              dangerouslySetInnerHTML={{ __html: data?.information as string }}
+            />
+          )}
 
-          {data.socialMedia && data.socialMedia?.length > 0 && (
+          {data?.socialMedia && data?.socialMedia?.length > 0 && (
             <>
               <Text fw="bold" fz="lg">
                 Follow Us on Social Media
@@ -43,7 +45,7 @@ export function Description({ data }: Props) {
 
           <Space h="lg" />
 
-          {data.tags && data.tags?.length > 0 && (
+          {data?.tags && data?.tags?.length > 0 && (
             <>
               <Text fw="bold" fz="lg">
                 Tags
@@ -67,7 +69,7 @@ export function Description({ data }: Props) {
 
         <Space h="lg" />
 
-        {data.artists && data.artists?.length > 0 && (
+        {data?.artists && data?.artists?.length > 0 && (
           <Carousel
             // withIndicators
             height={200}
@@ -94,7 +96,9 @@ export function Description({ data }: Props) {
       </Grid.Col>
 
       <Grid.Col span={{ base: 12, md: 4 }}>
-        <TicketCounter />
+        <Card withBorder>
+          <TicketCounter />
+        </Card>
       </Grid.Col>
     </Grid>
   );

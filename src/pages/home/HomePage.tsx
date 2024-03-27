@@ -30,10 +30,6 @@ export function HomePage() {
     <>
       <Space h={CONTENT_SPACING} />
 
-      {/* <SearchBar /> */}
-
-      <Space h="md" />
-
       <Categories />
 
       <Space h={CONTENT_SPACING} />

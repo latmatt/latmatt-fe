@@ -22,8 +22,8 @@ export function Categories() {
       {data?.data.data.map((cat: Category) => (
         <Grid.Col key={cat.name} span={{ base: 4, sm: 4, md: 2 }}>
           <AspectRatio
-            onClick={() => navigate(`/categories/${cat.id}`)}
-            ratio={1 / 1}
+            onClick={() => navigate(`/categories/${cat.type}?id=${cat.id}`)}
+            ratio={3 / 2}
             w="100%"
             mx="auto"
             className={classes.category}

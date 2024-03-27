@@ -18,7 +18,7 @@ import {
 import { CategoryDetailPage } from '@pages/category-detail';
 import { EventDetailPage } from '@pages/event-detail';
 import { HomePage } from '@pages/home';
-import { SearchResultPage } from '@pages/index';
+import { RestaurentDetailPage, SearchResultPage } from '@pages/index';
 import { PaymentPage } from '@pages/payment';
 import { PurchaseInfoPage } from '@pages/purchase-info';
 import { SupportPage } from '@pages/support';
@@ -97,8 +97,12 @@ export const router = createBrowserRouter([
     element: <CategoryLayout />,
     children: [
       {
-        path: ':id',
+        path: 'CONCERT',
         element: <CategoryDetailPage />,
+      },
+      {
+        path: 'RESTAURANT',
+        element: <RestaurentDetailPage />,
       },
     ],
   },

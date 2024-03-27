@@ -17,59 +17,48 @@ import {
 } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
 import { IconArrowNarrowLeft } from '@tabler/icons';
-import CryptoJS from 'crypto-js';
-// import JSEncrypt from 'jsencrypt';
-import forge from 'node-forge';
 import { useNavigate } from 'react-router-dom';
 import { PhoneInput } from '@components/input';
-// import { encryptDataWithRSA } from '@utils/helper';
 import { useInvoice } from '@hooks/useInvoice';
+import { dingerPrebuilt } from '@services/dinger';
 import { paymentSchema } from '@utils/schema';
 import useUserStore from '../../store/user';
-import { encryptDataWithRSA } from '@utils/helper';
-
-// function encryptDataWithRSA(encryptKey: any, plaintext: any) {
-//   const publicKeyForge = forge.pki.publicKeyFromPem(encryptKey);
-//   const encryptedBytes = publicKeyForge.encrypt(plaintext);
-//   const encryptedHex = forge.util.bytesToHex(encryptedBytes);
-//   return encryptedHex;
-// }
 
 export function PaymentPage() {
   const navigate = useNavigate();
   const id = useId();
-  // const { selectedSeats } = useUserStore();
-  // const invoice = useInvoice({
-  //   cart: selectedSeats,
-  //   type: 'concert',
-  //   taxPercent: 5,
-  //   serviceChargesPercent: 10,
-  // });
+
+  const { cart } = useUserStore();
+
+  const invoice = useInvoice({
+    cart: cart.concert,
+    type: 'concert',
+    taxPercent: 5,
+    serviceChargesPercent: 10,
+  });
 
   const [zones, setZones] = useState<{ name: string; seats: string[] }[]>([]);
 
-  // useMemo(() => {
-  //   const zoneResult: { name: string; seats: string[] }[] = [];
-  //   selectedSeats.forEach((seat: any) => {
-  //     const existedZone = zoneResult.find(
-  //       (z) => z.name === seat.ticketZone.name
-  //     );
+  useMemo(() => {
+    const zoneResult: { name: string; seats: string[] }[] = [];
+    cart.concert.forEach((seat: any) => {
+      const existedZone = zoneResult.find(
+        (z) => z.name === seat.ticketZone.name
+      );
 
-  //     if (!existedZone) {
-  //       zoneResult.push({ name: seat.ticketZone.name, seats: [] });
-  //     }
-  //   });
+      if (!existedZone) {
+        zoneResult.push({ name: seat.ticketZone.name, seats: [] });
+      }
+    });
 
-  //   setZones(
-  //     zoneResult.map((zr) => ({
-  //       name: zr.name,
-  //       seats: selectedSeats,
-  //     }))
-  //   );
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [selectedSeats]);
-
-  // const { data, isLoading } = useGetDingerPrebuilt();
+    setZones(
+      zoneResult.map((zr) => ({
+        name: zr.name,
+        seats: cart.concert,
+      }))
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cart.concert]);
 
   const form = useForm({
     initialValues: {
@@ -82,60 +71,26 @@ export function PaymentPage() {
       terms: false,
       refundPolicy: false,
     },
-    // validate: zodResolver(paymentSchema),
+    validate: zodResolver(paymentSchema),
   });
 
   const handlePreBuildCheckout = async () => {
-    // Mock items
-    const items = JSON.stringify([
-      {
-        name: 'Dinger',
-        amount: 1100,
-        quantity: 2,
-      },
-    ]);
-
     const data = {
-      clientId: import.meta.env.VITE_PAYMANT_CLIENT_ID,
-      publicKey: import.meta.env.VITE_PAYMENT_PUBLIC_KEY,
-      items,
-      customerName: 'John Doe',
-      totalAmount: 1000,
+      customerName: 'Kyaw Kyaw',
+      totalAmount: 2200,
       merchantOrderId: id,
-      merchantKey: import.meta.env.VITE_PAYMENT_MERCHANT_API_KEY,
-      projectName: 'LATTMAT',
-      merchantName: 'LATTMAT',
+      items: [
+        {
+          name: 'Dinger',
+          amount: 1100,
+          quantity: 2,
+        },
+      ],
     };
 
-    /**
-     * Encrypt data with RSA Algorithm
-     */
-    const encryptedData = encryptDataWithRSA(
-      JSON.stringify(data),
-      import.meta.env.VITE_PAYMENT_ENCRYPTION_KEY
-    );
+    const prebuiltData = await dingerPrebuilt(data);
 
-    /**
-     * Convert encrypted data to base64
-     */
-    const base64EncryptedData = encodeURI(btoa(encryptedData));
-
-    /**
-     * Hash base64 data with sha256 using secret key from Dinger
-     */
-    const hash = CryptoJS.HmacSHA256(
-      base64EncryptedData,
-      import.meta.env.VITE_PAYMENT_SECRET_KEY
-    ).toString();
-
-    // console.log('encryptedData', encryptedData);
-    // console.log('base64EncryptedData', base64EncryptedData);
-    // console.log('hash', hash);
-    // console.log(
-    //   `https://prebuilt.dinger.asia/?payload=${base64EncryptedData}&hashValue=${hash}`
-    // );
-
-    // window.location.href = `https://prebuilt.dinger.asia/?payload=${base64EncryptedData}&hashValue=${hash}`;
+    window.location.href = prebuiltData.data.data.url;
   };
 
   return (
@@ -210,7 +165,8 @@ export function PaymentPage() {
                 Your Ticket Detail
               </Text>
             </Box>
-            {/* <Card withBorder>
+
+            <Card withBorder>
               <Stack>
                 <Group justify="space-between">
                   <Text fw="bold">Zone</Text>
@@ -220,7 +176,7 @@ export function PaymentPage() {
                 {zones.map((z) => (
                   <Group key={z.name} justify="space-between">
                     <Text>{z.name}</Text>
-                    <Text>001</Text>
+                    <Text>{z.seats.map((s: any) => s.name).join(', ')}</Text>
                   </Group>
                 ))}
 
@@ -245,7 +201,7 @@ export function PaymentPage() {
 
                 <Group justify="space-between">
                   <Text fw="bold">No. of tickets</Text>
-                  <Text>{selectedSeats.length}</Text>
+                  <Text>{cart.concert.length}</Text>
                 </Group>
 
                 <Divider />
@@ -256,14 +212,12 @@ export function PaymentPage() {
                 </Group>
 
                 <Group justify="space-between">
-                  <Text fw="bold">
-                    Service Charges ( {invoice.serviceChargesPercent} % )
-                  </Text>
+                  <Text fw="bold">Service Charges ( 10 % )</Text>
                   <Text>{invoice.serviceCharges} Ks</Text>
                 </Group>
 
                 <Group justify="space-between">
-                  <Text fw="bold">Tax ( {invoice.taxPercent} % )</Text>
+                  <Text fw="bold">Tax ( 10 % )</Text>
                   <Text>{invoice.tax} Ks</Text>
                 </Group>
 
@@ -276,7 +230,7 @@ export function PaymentPage() {
                   </Text>
                 </Group>
               </Stack>
-            </Card> */}
+            </Card>
 
             <Space h="md" />
 
