@@ -18,7 +18,12 @@ import {
 import { CategoryDetailPage } from '@pages/category-detail';
 import { EventDetailPage } from '@pages/event-detail';
 import { HomePage } from '@pages/home';
-import { RestaurentDetailPage, SearchResultPage } from '@pages/index';
+import {
+  RestaurentDetailsPage,
+  RestaurentPaymentPage,
+  RestaurentsPage,
+  SearchResultPage,
+} from '@pages/index';
 import { PaymentPage } from '@pages/payment';
 import { PurchaseInfoPage } from '@pages/purchase-info';
 import { SupportPage } from '@pages/support';
@@ -102,7 +107,15 @@ export const router = createBrowserRouter([
       },
       {
         path: 'RESTAURANT',
-        element: <RestaurentDetailPage />,
+        element: <RestaurentsPage />,
+      },
+      {
+        path: 'RESTAURANT/:id',
+        element: <RestaurentDetailsPage />,
+      },
+      {
+        path: 'RESTAURANT/:id/payment',
+        element: <RestaurentPaymentPage />,
       },
     ],
   },

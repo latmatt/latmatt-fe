@@ -23,6 +23,11 @@ export const components = {
       maxDropdownHeight: '80vh',
     },
   }),
+  TextArea: TextInput.extend({
+    defaultProps: {
+      size: 'lg',
+    },
+  }),
   TextInput: TextInput.extend({
     defaultProps: {
       size: 'lg',

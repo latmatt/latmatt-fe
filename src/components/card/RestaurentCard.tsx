@@ -7,7 +7,7 @@ export function RestaurentCard() {
 
   return (
     <Card
-      onClick={() => navigate('/')}
+      onClick={() => navigate('/categories/RESTAURANT/wef')}
       className={classes.card}
       withBorder
       radius="lg"

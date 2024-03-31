@@ -5,7 +5,7 @@ import { BannerCarosal } from '@components/common';
 import { CardLists } from '@components/lists';
 import { CONTENT_SPACING } from '@config/const';
 
-export function RestaurentDetailPage() {
+export function RestaurentsPage() {
   return (
     <>
       <RestaurentCardCarousel title="Coming Soon" />
