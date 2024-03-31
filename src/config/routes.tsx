@@ -95,6 +95,14 @@ export const router = createBrowserRouter([
         path: 'your-ticket',
         element: <YourTicketPage />,
       },
+      {
+        path: 'RESTAURANT/:id',
+        element: <RestaurentDetailsPage />,
+      },
+      {
+        path: 'RESTAURANT/:id/payment',
+        element: <RestaurentPaymentPage />,
+      },
     ],
   },
   {
@@ -108,14 +116,6 @@ export const router = createBrowserRouter([
       {
         path: 'RESTAURANT',
         element: <RestaurentsPage />,
-      },
-      {
-        path: 'RESTAURANT/:id',
-        element: <RestaurentDetailsPage />,
-      },
-      {
-        path: 'RESTAURANT/:id/payment',
-        element: <RestaurentPaymentPage />,
       },
     ],
   },

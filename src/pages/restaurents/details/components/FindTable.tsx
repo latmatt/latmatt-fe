@@ -17,10 +17,7 @@ export function FindTable() {
 
           <TextInput label="Input label" placeholder="Input placeholder" />
 
-          <Button
-            onClick={() => navigate('/categories/RESTAURANT/wef/payment')}
-            fullWidth
-          >
+          <Button onClick={() => navigate('/RESTAURANT/wef/payment')} fullWidth>
             Book Now
           </Button>
         </Stack>
