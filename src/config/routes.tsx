@@ -21,6 +21,7 @@ import { HomePage } from '@pages/home';
 import {
   RestaurentDetailsPage,
   RestaurentPaymentPage,
+  RestaurentSuccessPage,
   RestaurentsPage,
   SearchResultPage,
 } from '@pages/index';
@@ -102,6 +103,10 @@ export const router = createBrowserRouter([
       {
         path: 'RESTAURANT/:id/payment',
         element: <RestaurentPaymentPage />,
+      },
+      {
+        path: 'RESTAURANT/:id/payment-success',
+        element: <RestaurentSuccessPage />,
       },
     ],
   },

@@ -1,5 +1,5 @@
 import { Group, Stack, Title, ActionIcon } from '@mantine/core';
-import { IconAdjustments } from '@tabler/icons';
+import { IconBookmark, IconHeart, IconShare } from '@tabler/icons';
 import { RestaurentRating } from '@components/rating-reviews';
 
 export function ProfileTitle() {
@@ -13,24 +13,15 @@ export function ProfileTitle() {
 
       <Group>
         <ActionIcon variant="filled" radius="xl" aria-label="Settings">
-          <IconAdjustments
-            style={{ width: '70%', height: '70%' }}
-            stroke={1.5}
-          />
+          <IconBookmark style={{ width: '70%', height: '70%' }} stroke={1.5} />
         </ActionIcon>
 
         <ActionIcon variant="filled" radius="xl" aria-label="Settings">
-          <IconAdjustments
-            style={{ width: '70%', height: '70%' }}
-            stroke={1.5}
-          />
+          <IconHeart style={{ width: '70%', height: '70%' }} stroke={1.5} />
         </ActionIcon>
 
         <ActionIcon variant="filled" radius="xl" aria-label="Settings">
-          <IconAdjustments
-            style={{ width: '70%', height: '70%' }}
-            stroke={1.5}
-          />
+          <IconShare style={{ width: '70%', height: '70%' }} stroke={1.5} />
         </ActionIcon>
       </Group>
     </Group>

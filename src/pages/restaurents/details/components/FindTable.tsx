@@ -1,4 +1,6 @@
 import { Card, Button, TextInput, Stack, Title } from '@mantine/core';
+import { DatePickerInput, TimeInput } from '@mantine/dates';
+import { IconUsers, IconCalendar, IconClockHour2 } from '@tabler/icons';
 import { useNavigate } from 'react-router-dom';
 
 export function FindTable() {
@@ -11,11 +13,22 @@ export function FindTable() {
       </Title>
       <form>
         <Stack gap="sm">
-          <TextInput label="Input label" placeholder="Input placeholder" />
+          <TextInput
+            type="number"
+            placeholder="Person Count"
+            leftSection={<IconUsers />}
+          />
 
-          <TextInput label="Input label" placeholder="Input placeholder" />
+          <DatePickerInput
+            placeholder="Choose Date"
+            minDate={new Date()}
+            leftSection={<IconCalendar />}
+          />
 
-          <TextInput label="Input label" placeholder="Input placeholder" />
+          <TimeInput
+            placeholder="Choose Time"
+            leftSection={<IconClockHour2 />}
+          />
 
           <Button onClick={() => navigate('/RESTAURANT/wef/payment')} fullWidth>
             Book Now

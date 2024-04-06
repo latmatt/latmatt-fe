@@ -1,16 +1,42 @@
-import { Card, Title, Text, Image } from '@mantine/core';
+import { Carousel } from '@mantine/carousel';
+import { Card, Title, Text, Image, Box } from '@mantine/core';
+import { modals } from '@mantine/modals';
+import { ImageListModal } from '@components/modals';
+import { imageList } from '@config/mocks';
 import { ProfileTitle } from './ProfileTitle';
 
 export function Profile() {
+  const handleSelectImg = (idx: number) =>
+    modals.open({
+      centered: true,
+      withCloseButton: true,
+      children: <ImageListModal selectedImgIdx={idx} imgList={imageList} />,
+      closeOnClickOutside: true,
+      fullScreen: true,
+    });
+
   return (
     <Card withBorder>
       <ProfileTitle />
 
-      <Image
-        my="lg"
-        radius="md"
-        src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-7.png"
-      />
+      <Image my="lg" radius="md" src={imageList[0]} />
+
+      <Carousel
+        withIndicators
+        slideSize="25%"
+        slideGap="md"
+        loop
+        align="start"
+        slidesToScroll={1}
+      >
+        {imageList.map((img, i) => (
+          <Carousel.Slide key={img}>
+            <Box onClick={() => handleSelectImg(i)}>
+              <Image my="lg" radius="md" src={img} />
+            </Box>
+          </Carousel.Slide>
+        ))}
+      </Carousel>
 
       <Title order={6}>Description</Title>
 

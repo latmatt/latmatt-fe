@@ -8,6 +8,7 @@ import {
   Select,
   Text,
 } from '@mantine/core';
+import { DatePickerInput, TimeInput } from '@mantine/dates';
 import { IconChevronDown } from '@tabler/icons';
 
 export const components = {
@@ -29,6 +30,16 @@ export const components = {
     },
   }),
   TextInput: TextInput.extend({
+    defaultProps: {
+      size: 'lg',
+    },
+  }),
+  DatePickerInput: DatePickerInput.extend({
+    defaultProps: {
+      size: 'lg',
+    },
+  }),
+  TimeInput: TimeInput.extend({
     defaultProps: {
       size: 'lg',
     },

@@ -125,7 +125,12 @@ export function RestaurentPaymentPage() {
               />
             </Stack>
 
-            <Button fullWidth>Book Now</Button>
+            <Button
+              onClick={() => navigate('/RESTAURANT/wef/payment-success')}
+              fullWidth
+            >
+              Book Now
+            </Button>
           </Grid.Col>
         </Grid>
       </form>
