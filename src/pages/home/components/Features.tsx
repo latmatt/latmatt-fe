@@ -6,7 +6,7 @@ export function Features() {
   return (
     <Grid>
       {FEATURES.map((fe) => (
-        <Grid.Col key={fe.name} span={{ base: 12, sm: 6, md: 3 }}>
+        <Grid.Col key={fe.name} span={{ base: 6, sm: 6, md: 3 }}>
           <FeatureCard
             name={fe.name}
             description={fe.description}
