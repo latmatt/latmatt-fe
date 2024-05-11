@@ -5,7 +5,7 @@ export function Features() {
   return (
     <Grid my={70}>
       {features.map((feature) => (
-        <Grid.Col key={feature.id} span={{ xs: 6, md: 3 }}>
+        <Grid.Col key={feature.id} span={{ base: 6, md: 3 }}>
           <Center>
             <Stack>
               <Box>

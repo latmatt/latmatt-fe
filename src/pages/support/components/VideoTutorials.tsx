@@ -9,7 +9,7 @@ export function VideoTutorials() {
       </Grid.Col>
       {tutorialVideos.map((video: any) => (
         <Grid.Col key={video.id} span={{ md: 3 }}>
-          <Card withBorder p={0}>
+          <Card withBorder radius="lg" p={0}>
             <iframe
               width="100%"
               //   height="315"

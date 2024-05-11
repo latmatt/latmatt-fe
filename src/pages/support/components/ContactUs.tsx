@@ -1,11 +1,11 @@
 import {
   Button,
   Space,
-  Title,
   Flex,
   Stack,
   BackgroundImage,
   Image,
+  Text,
   Box,
 } from '@mantine/core';
 import BgImg from '@assets/images/svg/contactbg.svg';
@@ -23,8 +23,17 @@ export function ContactUs() {
           justify={{ sm: 'space-between' }}
           align="center"
         >
-          <Stack pl="lg" gap="lg" pb={{ base: 'lg', md: 0 }}>
-            <Title order={5}>Do you need real time support?</Title>
+          <Stack w="100%" pl="lg" gap="lg" pb={{ base: 'lg', md: 0 }}>
+            {/* <Title order={5}>Do you need real time support?</Title> */}
+            <Text
+              fz={{
+                base: 20,
+                md: 25,
+              }}
+              fw="bold"
+            >
+              Do you need real time support?
+            </Text>
 
             <Box>
               <Button>Contact Us</Button>
