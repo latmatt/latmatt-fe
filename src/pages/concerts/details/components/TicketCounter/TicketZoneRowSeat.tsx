@@ -2,9 +2,9 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { Box, Grid, Skeleton, Space, Text } from '@mantine/core';
 import { SEAT_STATUS } from '@config/const';
-import { useGetTicketSeats } from '@pages/event-detail/queries';
 import classes from './style.module.css';
 import { TicketSeat } from './TicketSeat';
+import { useGetTicketSeats } from '../../queries';
 
 interface RowProps {
   row: EventRows;

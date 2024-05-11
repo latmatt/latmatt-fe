@@ -8,7 +8,7 @@ import { CONTENT_SPACING, LAYOUT_PADDING } from '@config/const';
 import { BannerImg, Description, MetaInfo } from './components';
 import { useGetEventDetails } from './queries';
 
-export function EventDetailPage() {
+export function ConcertDetailPage() {
   const [scroll] = useWindowScroll();
   const { id } = useParams();
   const { data, isLoading } = useGetEventDetails({

@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Grid, Box, Text } from '@mantine/core';
 import classes from './style.module.css';
-import useUserStore from '../../../../store/user';
+import useUserStore from '../../../../../store/user';
 
 interface SeatProps {
   seat: EventSeat;

@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { Group, ActionIcon, Text } from '@mantine/core';
 import { IconPlus, IconMinus } from '@tabler/icons';
 import { SEAT_STATUS } from '@config/const';
-import { useGetTicketSeats } from '@pages/event-detail/queries';
-import useUserStore from '../../../../store/user';
+import useUserStore from '../../../../../store/user';
+import { useGetTicketSeats } from '../../queries';
 
 interface Props {
   zone: EventZones;

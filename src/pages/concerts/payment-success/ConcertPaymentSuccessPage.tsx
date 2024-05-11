@@ -3,7 +3,7 @@ import TicketImg from '@assets/images/common/ticketfront.png';
 import { DataColumn, DataRow } from '@components/common';
 import classes from './styles.module.css';
 
-export function PurchaseInfoPage() {
+export function ConcertPaymentSuccessPage() {
   return (
     <Grid>
       <Grid.Col span={{ base: 12, sm: 7, md: 9 }}>

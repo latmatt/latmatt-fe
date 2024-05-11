@@ -16,15 +16,15 @@ import { IconChevronDown, IconChevronUp } from '@tabler/icons';
 import dayjs from 'dayjs';
 import { useNavigate, useParams } from 'react-router-dom';
 import { LatMatCollapse } from '@components/collapse';
-import {
-  useGetEventLocations,
-  useGetEventDates,
-  useGetTicketZones,
-} from '@pages/event-detail/queries';
 import { FilterBox } from './FilterBox';
 import { TicketZone } from './TicketZone';
 import { TicketZoneWithRow } from './TicketZoneRowSeat';
 import { TicketZoneWithSeats } from './TicketZoneSeats';
+import {
+  useGetEventDates,
+  useGetEventLocations,
+  useGetTicketZones,
+} from '../../queries';
 
 interface TicketZoneViewerProps {
   zones: EventZones[];

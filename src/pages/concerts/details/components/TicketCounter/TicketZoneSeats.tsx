@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Box, Grid, Skeleton, Space, Text } from '@mantine/core';
-import { useGetTicketSeats } from '@pages/event-detail/queries';
 import classes from './style.module.css';
 import { TicketSeat } from './TicketSeat';
+import { useGetTicketSeats } from '../../queries';
 
 interface ZoneProps {
   rows: EventRows[];
