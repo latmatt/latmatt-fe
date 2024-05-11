@@ -30,7 +30,10 @@ export function FindTable() {
             leftSection={<IconClockHour2 />}
           />
 
-          <Button onClick={() => navigate('/RESTAURANT/wef/payment')} fullWidth>
+          <Button
+            onClick={() => navigate('/restaurants/wef/payment')}
+            fullWidth
+          >
             Book Now
           </Button>
         </Stack>

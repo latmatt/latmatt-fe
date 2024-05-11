@@ -1,7 +1,7 @@
 import { Carousel } from '@mantine/carousel';
 import { Box } from '@mantine/core';
 import rocket from '@assets/images/lottie/rocket.json';
-import { RestaurentCard } from '@components/card';
+import { RestaurantCard } from '@components/card';
 import { CardLoading } from '@components/loading/CardListLoading';
 import { CarouselTitle } from './CarouselTitle';
 
@@ -20,31 +20,31 @@ export function RestaurentCardCarousel({ isLoading = false, title }: Props) {
 
       <Carousel>
         <Carousel.Slide>
-          <RestaurentCard />
+          <RestaurantCard />
         </Carousel.Slide>
 
         <Carousel.Slide>
-          <RestaurentCard />
+          <RestaurantCard />
         </Carousel.Slide>
 
         <Carousel.Slide>
-          <RestaurentCard />
+          <RestaurantCard />
         </Carousel.Slide>
 
         <Carousel.Slide>
-          <RestaurentCard />
+          <RestaurantCard />
         </Carousel.Slide>
 
         <Carousel.Slide>
-          <RestaurentCard />
+          <RestaurantCard />
         </Carousel.Slide>
 
         <Carousel.Slide>
-          <RestaurentCard />
+          <RestaurantCard />
         </Carousel.Slide>
 
         <Carousel.Slide>
-          <RestaurentCard />
+          <RestaurantCard />
         </Carousel.Slide>
       </Carousel>
     </Box>

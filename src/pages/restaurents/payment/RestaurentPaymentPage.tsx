@@ -126,7 +126,7 @@ export function RestaurentPaymentPage() {
             </Stack>
 
             <Button
-              onClick={() => navigate('/RESTAURANT/wef/payment-success')}
+              onClick={() => navigate('/restaurants/wef/payment-success')}
               fullWidth
             >
               Book Now

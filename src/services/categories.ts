@@ -19,7 +19,7 @@ export function comingSoonByCategory(
   { size = 6 }: EventListParamType,
   id: string
 ) {
-  return axios.get(`/events/${id}/coming-soon`, { params: { size } });
+  return axios.get(`/events${id}/coming-soon`, { params: { size } });
 }
 
 export function eventsByCategory({

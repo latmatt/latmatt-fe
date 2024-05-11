@@ -1,5 +1,5 @@
 import { Space } from '@mantine/core';
-import { RestaurentCard } from '@components/card';
+import { RestaurantCard } from '@components/card';
 import { RestaurentCardCarousel } from '@components/carousels';
 import { BannerCarosal } from '@components/common';
 import { CardLists } from '@components/lists';
@@ -18,7 +18,7 @@ export function RestaurentsPage() {
 
       <Space h={CONTENT_SPACING} />
 
-      <CardLists title="All Restaurents" cardCmp={<RestaurentCard />} />
+      <CardLists title="All Restaurents" cardCmp={<RestaurantCard />} />
 
       <Space h={CONTENT_SPACING} />
     </>

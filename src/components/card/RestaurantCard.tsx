@@ -2,12 +2,12 @@ import { Card, Image, Text, Box } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import classes from './style.module.css';
 
-export function RestaurentCard() {
+export function RestaurantCard() {
   const navigate = useNavigate();
 
   return (
     <Card
-      onClick={() => navigate('/RESTAURANT/wef')}
+      onClick={() => navigate('/restaurants/wef')}
       className={classes.card}
       withBorder
       radius="lg"

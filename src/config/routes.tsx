@@ -4,7 +4,9 @@ import {
   AuthLayout,
   CategoryLayout,
   DefaultLayout,
+  DetailLayout,
   EventLayout,
+  ListLayout,
   RootLayout,
   RootLayoutWithSearchBar,
 } from '@layouts';
@@ -19,6 +21,7 @@ import { CategoryDetailPage } from '@pages/category-detail';
 import { EventDetailPage } from '@pages/event-detail';
 import { HomePage } from '@pages/home';
 import {
+  ConcertListPage,
   RestaurentDetailsPage,
   RestaurentPaymentPage,
   RestaurentSuccessPage,
@@ -68,84 +71,128 @@ export const router = createBrowserRouter([
   },
   {
     path: '/',
-    element: <RootLayoutWithSearchBar />,
+    element: <ListLayout />,
     children: [
       {
         index: true,
         element: <HomePage />,
       },
       {
-        path: 'ticket',
-        element: <HomePage />,
-      },
-      {
         path: 'search-results',
         element: <SearchResultPage />,
+      },
+      {
+        path: 'restaurants',
+        element: <RestaurentsPage />,
+      },
+      {
+        path: 'concerts',
+        element: <ConcertListPage />,
       },
     ],
   },
   {
     path: '/',
-    element: <RootLayout />,
+    element: <DetailLayout />,
     children: [
       {
-        path: 'support',
-        element: <SupportPage />,
+        path: 'concerts/:id',
+        element: <EventDetailPage />,
       },
       {
-        path: 'your-ticket',
-        element: <YourTicketPage />,
-      },
-      {
-        path: 'RESTAURANT/:id',
+        path: 'restaurants/:id',
         element: <RestaurentDetailsPage />,
       },
       {
-        path: 'RESTAURANT/:id/payment',
+        path: 'restaurants/:id/payment',
         element: <RestaurentPaymentPage />,
       },
       {
-        path: 'RESTAURANT/:id/payment-success',
+        path: 'restaurants/:id/payment-success',
         element: <RestaurentSuccessPage />,
       },
     ],
   },
-  {
-    path: '/categories',
-    element: <CategoryLayout />,
-    children: [
-      {
-        path: 'CONCERT',
-        element: <CategoryDetailPage />,
-      },
-      {
-        path: 'RESTAURANT',
-        element: <RestaurentsPage />,
-      },
-    ],
-  },
-  {
-    path: '/events',
-    element: <EventLayout />,
-    children: [
-      {
-        path: ':id',
-        element: <EventDetailPage />,
-      },
-    ],
-  },
-  {
-    path: '/a',
-    element: <AuthLayout />,
-    children: [
-      {
-        path: 'payment',
-        element: <PaymentPage />,
-      },
-      {
-        path: 'purchase-info',
-        element: <PurchaseInfoPage />,
-      },
-    ],
-  },
+  // {
+  //   path: '/',
+  //   element: <RootLayoutWithSearchBar />,
+  //   children: [
+  //     {
+  //       index: true,
+  //       element: <HomePage />,
+  //     },
+  //     {
+  //       path: 'ticket',
+  //       element: <HomePage />,
+  //     },
+  //     {
+  //       path: 'search-results',
+  //       element: <SearchResultPage />,
+  //     },
+  //   ],
+  // },
+  // {
+  //   path: '/',
+  //   element: <RootLayout />,
+  //   children: [
+  //     {
+  //       path: 'support',
+  //       element: <SupportPage />,
+  //     },
+  //     {
+  //       path: 'your-ticket',
+  //       element: <YourTicketPage />,
+  //     },
+  //     {
+  //       path: 'RESTAURANT/:id',
+  //       element: <RestaurentDetailsPage />,
+  //     },
+  //     {
+  //       path: 'RESTAURANT/:id/payment',
+  //       element: <RestaurentPaymentPage />,
+  //     },
+  //     {
+  //       path: 'RESTAURANT/:id/payment-success',
+  //       element: <RestaurentSuccessPage />,
+  //     },
+  //   ],
+  // },
+  // {
+  //   path: '/categories',
+  //   element: <CategoryLayout />,
+  //   children: [
+  //     {
+  //       path: 'CONCERT',
+  //       element: <CategoryDetailPage />,
+  //     },
+  //     {
+  //       path: 'RESTAURANT',
+  //       element: <RestaurentsPage />,
+  //     },
+  //   ],
+  // },
+  // {
+  //   path: '/events',
+  //   element: <EventLayout />,
+  //   children: [
+  //     {
+  //       path: ':id',
+  //       element: <EventDetailPage />,
+  //     },
+  //   ],
+  // },
+  // {
+  //   path: '/a',
+  //   element: <AuthLayout />,
+  //   children: [
+  //     {
+  //       path: 'payment',
+  //       element: <PaymentPage />,
+  //     },
+  //     {
+  //       path: 'purchase-info',
+  //       element: <PurchaseInfoPage />,
+  //     },
+  //   ],
+  // },
 ]);
