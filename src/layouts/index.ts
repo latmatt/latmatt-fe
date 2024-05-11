@@ -1,8 +1,5 @@
-export * from './RootLayout';
 export * from './DefaultLayout';
 export * from './AuthLayout';
-export * from './EventLayout';
-export * from './RootLayoutWithSearchBar';
 
 export * from './ListLayout';
 export * from './DetailLayout';
