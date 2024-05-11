@@ -11,7 +11,7 @@ export function ItemCard({ item }: Props) {
 
   return (
     <Card
-      onClick={() => navigate(`/events/${item.id}`)}
+      onClick={() => navigate(`/concerts/${item.id}`)}
       className={classes.card}
       withBorder
       radius="lg"

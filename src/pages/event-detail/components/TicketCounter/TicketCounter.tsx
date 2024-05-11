@@ -113,7 +113,7 @@ export function TicketCounter() {
   });
 
   const handleCheckout = () => {
-    navigate('/a/payment');
+    navigate('payment');
   };
 
   return (

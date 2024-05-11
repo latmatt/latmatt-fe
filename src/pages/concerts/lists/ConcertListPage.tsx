@@ -84,7 +84,7 @@ export function ConcertListPage() {
 
       <BannerCarosal />
 
-      <Space h={CONTENT_SPACING} />
+      {/* <Space h={CONTENT_SPACING} />
 
       <ItemPangination
         data={events?.data.content}
@@ -94,7 +94,7 @@ export function ConcertListPage() {
         }
         setPage={handleEventPageChange}
         totalPages={events?.data.totalPages}
-      />
+      /> */}
 
       <Space h={CONTENT_SPACING} />
     </>

@@ -52,7 +52,7 @@ export function Categories() {
         <Grid.Col key={cat.name} span={{ base: 4, sm: 4, md: 2 }}>
           <AspectRatio
             onClick={() =>
-              navigate(`/${mapServerTypeAndLocalRoute(cat.type)}?id${cat.id}`)
+              navigate(`/${mapServerTypeAndLocalRoute(cat.type)}?id=${cat.id}`)
             }
             ratio={3 / 2}
             w="100%"

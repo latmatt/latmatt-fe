@@ -3,10 +3,13 @@ import { Page404 } from '@components/page';
 import {
   AuthLayout,
   CategoryLayout,
+  ConcertPaymentLayout,
   DefaultLayout,
   DetailLayout,
   EventLayout,
+  InfoLayout,
   ListLayout,
+  RestaurentDetailLayout,
   RootLayout,
   RootLayoutWithSearchBar,
 } from '@layouts';
@@ -22,17 +25,19 @@ import { EventDetailPage } from '@pages/event-detail';
 import { HomePage } from '@pages/home';
 import {
   ConcertListPage,
+  ConcertPaymentPage,
   RestaurentDetailsPage,
   RestaurentPaymentPage,
   RestaurentSuccessPage,
   RestaurentsPage,
   SearchResultPage,
+  YourTicketPage,
 } from '@pages/index';
 import { PaymentPage } from '@pages/payment';
 import { PurchaseInfoPage } from '@pages/purchase-info';
 import { SupportPage } from '@pages/support';
 import { TermsAndConditions } from '@pages/termsAndConditions';
-import { YourTicketPage } from '@pages/your-ticket/YourTicketPage';
+import { ConcertDetailLayout } from '../layouts/ConcertDetailLayout';
 
 export const router = createBrowserRouter([
   {
@@ -97,19 +102,52 @@ export const router = createBrowserRouter([
     children: [
       {
         path: 'concerts/:id',
-        element: <EventDetailPage />,
+        element: <ConcertDetailLayout />,
+        children: [
+          {
+            index: true,
+            element: <EventDetailPage />,
+          },
+        ],
+      },
+      {
+        path: 'concerts/:id/payment',
+        element: <ConcertPaymentLayout />,
+        children: [
+          {
+            index: true,
+            element: <ConcertPaymentPage />,
+          },
+        ],
       },
       {
         path: 'restaurants/:id',
-        element: <RestaurentDetailsPage />,
+        element: <RestaurentDetailLayout />,
+        children: [
+          {
+            index: true,
+            element: <RestaurentDetailsPage />,
+          },
+          {
+            path: 'payment',
+            element: <RestaurentPaymentPage />,
+          },
+          {
+            path: 'payment-success',
+            element: <RestaurentSuccessPage />,
+          },
+        ],
       },
+    ],
+  },
+  {
+    path: '/',
+    element: <InfoLayout />,
+    children: [
+      { path: '/support', element: <SupportPage /> },
       {
-        path: 'restaurants/:id/payment',
-        element: <RestaurentPaymentPage />,
-      },
-      {
-        path: 'restaurants/:id/payment-success',
-        element: <RestaurentSuccessPage />,
+        path: 'your-ticket',
+        element: <YourTicketPage />,
       },
     ],
   },
@@ -139,10 +177,10 @@ export const router = createBrowserRouter([
   //       path: 'support',
   //       element: <SupportPage />,
   //     },
-  //     {
-  //       path: 'your-ticket',
-  //       element: <YourTicketPage />,
-  //     },
+  // {
+  //   path: 'your-ticket',
+  //   element: <YourTicketPage />,
+  // },
   //     {
   //       path: 'RESTAURANT/:id',
   //       element: <RestaurentDetailsPage />,

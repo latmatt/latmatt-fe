@@ -10,7 +10,7 @@ import { useAppSetup } from '@hooks/useAppSetup';
 import { useQueries } from '@hooks/useQueries';
 import { getAuth, setAuth } from '@utils/auth';
 
-export function DetailLayout() {
+export function ConcertPaymentLayout() {
   const { queries } = useQueries();
   const navigate = useNavigate();
   const init = useAppSetup();
@@ -27,14 +27,11 @@ export function DetailLayout() {
   if (!init) return <PageLoading />;
   return (
     <Box>
-      <Outlet />
-      {/* <Navbar />
+      <Navbar />
 
       <Box px={LAYOUT_PADDING}>
         <Outlet />
-      </Box> */}
-
-      <Footer />
+      </Box>
     </Box>
   );
 }
